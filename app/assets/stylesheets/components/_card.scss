@@ -1,0 +1,25 @@
+.container .info-cards {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.info-card {
+  width: 300px;
+  text-align: center;
+  padding: 20px;
+}
+
+.info-card-img {
+  width: 75%;
+  height: 200px;
+}
+
+ .card-image-container{
+  background-size: cover !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  width: 950px;
+  max-height: 650px;
+}
