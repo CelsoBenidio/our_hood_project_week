@@ -10,10 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_20_091527) do
+ActiveRecord::Schema.define(version: 2020_04_20_102501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "boxes", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "price"
+    t.string "category"
+    t.bigint "order_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_boxes_on_order_id"
+  end
+
+  create_table "order_products", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "order_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_order_products_on_order_id"
+    t.index ["product_id"], name: "index_order_products_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "delivery_status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "preferences", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_preferences_on_user_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +66,16 @@ ActiveRecord::Schema.define(version: 2020_04_20_091527) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "address"
+    t.boolean "admin", default: false
+    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "boxes", "orders"
+  add_foreign_key "order_products", "orders"
+  add_foreign_key "order_products", "products"
+  add_foreign_key "orders", "users"
+  add_foreign_key "preferences", "users"
 end
