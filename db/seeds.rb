@@ -15,13 +15,14 @@ first_user = User.create(name: "Celso", email: "celso@gmail.com", address: "Ista
 
 first_user.preference = Preference.create()
 
-# 3 - Create Order
-first_order = Order.create(delivery_status: 1)
-first_user.orders.push(first_order)
-
 # 4 - Add box to the order
 
-first_order.box = Box.create(name: 'Premium plan', price: 60, description: "the most suitable for you", category: "general")
+first_box = Box.create(name: 'Premium plan', price: 60, description: "the most suitable for you", category: "general")
+
+# 3 - Create Order
+first_order = Order.create(delivery_status: 1, box_id: first_box.id)
+first_user.orders.push(first_order)
+
 
 # 5 - Create Product
 
