@@ -1,0 +1,33 @@
+
+
+<div class="row">
+  <div class="col-12 col-lg-6">
+    <h3>Col left</h3>
+
+  </div>
+
+<div class="col-12 col-lg-6">
+<% @boxes.each do |box|  %>
+<div class="card mb-2">
+  <div class="card-header">
+    <%= box.name %>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= box.price %></h5>
+      <p class="card-text"><%= box.description %></p>
+        <%= simple_form_for @cart, url: cart_path(@cart) do |f|%>
+        <%= f.hidden_field :box_id, value: box.id %>
+      <%= f.button :submit%>
+    <% end %>
+  </div>
+</div>
+<% end %>
+</div>
+
+
+
+
+
+
+
+</div>
