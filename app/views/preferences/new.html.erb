@@ -1,0 +1,17 @@
+<div class="preferences-new-page">
+  <%= simple_form_for @preference, url: preferences_path do |f| %>
+    <% SURVEY[:QUESTIONS].each_with_index do |question, index| %>
+      <section id="<%= question[:id] %>-section" class="scroll-section vh-100">
+        <h3> <%= question[:content] %> </h3>
+
+        <%= f.input question[:id].to_sym, as: :radio_buttons, collection: question[:options] %>
+
+        <% if index != SURVEY[:QUESTIONS].length - 1%>
+          <a class="btn btn-primary" href="#<%= SURVEY[:QUESTIONS][index + 1][:id]%>-section"> Next </a>
+        <% else %>
+          <%= f.button :submit %>
+        <% end %>
+      </section>
+    <% end %>
+  <% end %>
+</div>
