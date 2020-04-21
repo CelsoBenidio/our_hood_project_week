@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   resources :preferences, only: [:new, :create]
   resources :boxes, only: [:index]
   resources :products, only: [:index]
-  resources :carts, only: [:show]
+  resources :carts, only: [:show, :update]
   resources :orders, only: [:show]
 end
