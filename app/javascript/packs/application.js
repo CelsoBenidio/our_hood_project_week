@@ -4,3 +4,8 @@ require("channels")
 require("jquery")
 
 import "bootstrap";
+
+import { replaceLabelWithDiv, replaceFieldsetWithDiv } from './plugins/customRadioButtons'
+
+replaceLabelWithDiv()
+replaceFieldsetWithDiv()
