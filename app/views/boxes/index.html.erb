@@ -20,7 +20,7 @@
         <p class="card-text"><%= box.description %></p>
         <%= simple_form_for @cart, url: cart_path(@cart) do |f|%>
         <%= f.hidden_field :box_id, value: box.id %>
-        <div class="boxes btn btn-primary btn-sm">
+        <div class="boxes btn btn-primary text-white btn-sm">
           <%= f.button :submit %>
         </div>
         <% end %>
