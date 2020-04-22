@@ -65,8 +65,13 @@ ActiveRecord::Schema.define(version: 2020_04_20_151240) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "age"
+    t.string "name"
+    t.string "age"
     t.string "gender"
+    t.string "favorite_product"
+    t.string "visit_frequency"
+    t.string "issue"
+    t.string "needed_product"
     t.index ["user_id"], name: "index_preferences_on_user_id"
   end
 
