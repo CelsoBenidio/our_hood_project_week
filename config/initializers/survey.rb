@@ -3,11 +3,14 @@ SURVEY = {
     {
       content: 'First things first, tell us your name.',
       id: 'name',
-      type: 'text'
+      type: 'text',
+      type_order: '1 of 7'
     },
     {
       content: 'What is your age?',
       id: 'age',
+      type: 'radio',
+      type_order: '2 of 7',
       options: [
         'Under 18',
         '18-24',
@@ -20,6 +23,8 @@ SURVEY = {
     {
       content: 'Are you male or female?',
       id: 'gender',
+      type: 'radio',
+      type_order: '3 of 7',
       options: [
         'male',
         'female'
@@ -28,6 +33,8 @@ SURVEY = {
     {
       content: 'What do you usually buy from your favorite local shops?',
       id: 'favorite_product',
+      type_order: '4 of 7',
+      type_select: 'Select all that apply',
       options: [
         'Clothing',
         'Food',
@@ -41,6 +48,8 @@ SURVEY = {
     {
       content: 'How often do you visit them?',
       id: 'visit_frequency',
+      type: 'radio',
+      type_order: '5 of 7',
       options: [
         '1-3 times per month',
         '3-5 times per month',
@@ -50,6 +59,8 @@ SURVEY = {
     {
       content: 'What issues do you face when you buy local?',
       id: 'issue',
+      type_order: '6 of 7',
+      type_select: 'Select all that apply',
       options: [
         'Your shop is too far',
         'Your shop is too crowded',
@@ -62,6 +73,7 @@ SURVEY = {
     {
       content: 'What are you looking to find when you explore shops in a new neighborhood or street?',
       id: 'needed_product',
+      type_order: '7 of 7',
       type: 'text'
     }
   ]

@@ -47,16 +47,17 @@
         align-items: baseline;
         align-items: center;
         justify-content: center;
-        width: 200px;
-        height: 200px;
-        border: 2px solid black;
+        width: 150px;
+        height: 150px;
+        border: 0.5px solid lightgrey;
+        border-width: thin;
         border-radius: 2px;
         padding: 1rem;
         transition: transform 300ms ease;
 
         label {
           text-align: center;
-          font-size: 1.2rem;
+          font-size: 0.8rem;
           font-weight: 600;
           text-transform: uppercase;
           letter-spacing: 1px;
@@ -68,9 +69,9 @@
       //active tile styles
       input.check_boxes:checked + .radio-tile {
         background-color: #10E380;
-        border: 0.5px solid black;
+        border: 0.5px solid #0DBF6C;
         color: white;
-        transform: scale(1.0, 1.05);
+        transform: scale(1.01, 1.01);
 
         label {
           color: white;
