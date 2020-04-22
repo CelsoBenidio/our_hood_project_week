@@ -86,8 +86,7 @@ ActiveRecord::Schema.define(version: 2020_04_22_121724) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
-    t.string "age"
+    t.integer "age"
     t.string "gender"
     t.string "favorite_product", default: [], array: true
     t.string "visit_frequency", default: [], array: true
