@@ -23,3 +23,15 @@
   width: 950px;
   max-height: 650px;
 }
+
+.container .how-it-works-cards {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.how-it-works-card {
+  width: 300px;
+  text-align: center;
+  padding: 20px;
+}
