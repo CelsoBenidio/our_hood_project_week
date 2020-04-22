@@ -1,3 +1,14 @@
+.product-card {
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px rgba(200,200,200,0.5);
+
+  .product-image {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
 .product_container {
   position: relative;
   margin: 20px;
@@ -81,6 +92,7 @@
   line-height: 1.6em;
   margin-right: 25px;
   text-align: justify;
+  height: 120px;
 }
 
 .card_button {
