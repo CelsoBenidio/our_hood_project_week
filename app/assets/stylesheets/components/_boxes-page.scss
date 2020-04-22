@@ -1,0 +1,29 @@
+.boxes-img {
+  max-height: 213px;
+  width: 260px;
+  box-shadow: 4px 4px 2px rgba(0, 0, 0, .3);
+  border-radius: 25px;
+}
+
+.card.border.border-primary.mb-2 {
+  border-radius: 25px;
+  box-shadow: 4px 4px 2px rgba(0, 0, 0, .3);
+  opacity: .5;
+}
+
+.card.border.border-primary.mb-2:hover {
+  opacity: 1;
+  transition: opacity 500ms cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s;
+}
+
+.presents-img.float-right.border.border-primary.m-2 {
+  height: 213px;
+  max-width: 260px;
+  box-shadow: 4px 4px 2px rgba(0, 0, 0, .3);
+  border-radius: 25px;
+}
+
+.boxes.btn.btn-primary.btn-sm {
+  border-radius: 25px;
+  box-shadow: 4px 4px 2px rgba(0, 0, 0, .3);
+}
