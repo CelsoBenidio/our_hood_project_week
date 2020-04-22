@@ -1,13 +1,20 @@
-.navbar-collapse {
+.navbar-lewagon {
+  justify-content: space-between;
+  background: white;
+  box-shadow: rgba(55, 60, 70, 0.1) 0rem 0rem 2.4rem -0.4rem;
+}
+
+.navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-brand img {
+.navbar-lewagon .navbar-brand img {
   width: 120px;
 }
 
-.nav-border {
-  border-color: black;
+.navbar-light .navbar-toggler {
+  color: rgba(0, 0, 0, 0.5);
+  border-color: white;
 }
 
 .nav-item {
@@ -15,11 +22,11 @@
   align-items: center;
 }
 
-.green-text {
+.nav-link {
 color: grey;
 }
 
-.green-text:hover {
+.nav-link:hover {
 color: #0DBF6C;
 }
 
