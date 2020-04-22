@@ -29,7 +29,7 @@
         <% else %>
         <%= simple_form_for @cart_product do |f| %>
         <%= f.hidden_field :product_id, value: product.id  %>
-        <%= f.submit "Add to cart", class: "card_button" %>
+        <%= f.submit "Add to your Wishlist", class: "card_button" %>
         <% end %>
         <% end %>
       </div>
@@ -40,7 +40,3 @@
   <% end %>
   <% end %>
 </div>
-
-
-
-
