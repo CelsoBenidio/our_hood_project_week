@@ -1,4 +1,4 @@
-<div class="container justify-content-center">
+<div class="container-fluid justify-content-center">
   <% if @cart.products.count <= 0 %>
   <div class="row">
     <div class="link">
@@ -13,7 +13,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-12 col-lg-6 border-right border-primary">
+    <div class="col-12 col-lg-6 border-right border-primary products-container pb-3 pb-lg-0 pr-0 pr-lg-5">
       <h2 class="text-center text-primary" style="font-family: Roboto;"> Your Products</h2>
       <% @products.each do |product| %>
       <div class="cart-product bg-white shadow d-flex align-items-center mb-3 w-100">
@@ -41,13 +41,19 @@
       <% end %>
     </div>
 
-    <div class="col-12 col-lg-6">
+    <div class="col-12 col-lg-6 pt-3 pt-lg-0 pl-0 pl-lg-5">
       <h2 class="text-center text-primary"> Your Box</h2>
-      <div class="cart card text-white bg-primary mb-3 mt-5">
-        <div class="cart-header card-header mb-5"><%= @box&.name %></div>
+      <div class="cart card text-white bg-primary w-100">
+        <div class="cart-header card-header"><%= @box&.name %></div>
         <div class="card-body">
-          <h5 class="cart-title card-title mb-5"><%= @box&.description %></h5>
-          <p class="cart-text card-text"> <%= @box&.price %>₺</p>
+          <div class="row">
+            <div class="col cart-bg"></div>
+            <div class="col">
+          <h5 class="cart-title card-title mb-5 mt-5"><%= @box&.description %></h5>
+          <p class="cart-text card-text mt-5"> <%= @box&.price %>₺</p>
+
+            </div>
+          </div>
         </div>
       </div>
     </div>
