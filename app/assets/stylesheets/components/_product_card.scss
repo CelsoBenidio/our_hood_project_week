@@ -9,6 +9,12 @@
   border-radius: 10px;
 }
 
+.images {
+  width: 240px;
+  height: 240px;
+  display: flex;
+}
+
 #category_name {
   font-size: 0.7em;
   color:  #10E380;
@@ -27,8 +33,9 @@
 }
 
 #product-img {
-  width: 290px;
-  margin-top: 47px;
+  width: 100%;
+  height: auto;
+  align-self: center;
 }
 
 .slideshow-buttons {
@@ -85,7 +92,7 @@
   margin: -1px;
   border-radius: 2px;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   color: white;
   cursor: pointer;
   width: 90%;
@@ -114,4 +121,7 @@
 .focus{
   background: pink;
   color: white;
+}
+
+.prdct-buttons {
 }

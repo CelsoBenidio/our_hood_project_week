@@ -12,3 +12,15 @@
 .form-container {
   margin: 30px;
 }
+
+.scrolling-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  .product_container {
+    flex: 0 0 auto;
+    margin-right: 3px;
+  }
+}
