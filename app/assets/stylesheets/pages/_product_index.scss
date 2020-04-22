@@ -3,12 +3,6 @@
   text-align: center;
 }
 
-.product-index-container {
-  max-width: 1000px;
-  height: 100%;
-  display: contents;
-}
-
 .form-container {
   margin: 30px;
 }
@@ -18,9 +12,4 @@
   flex-wrap: nowrap;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-
-  .product_container {
-    flex: 0 0 auto;
-    margin-right: 3px;
-  }
 }

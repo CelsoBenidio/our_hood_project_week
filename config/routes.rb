@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :boxes, only: [:index]
   resources :products, only: [:index, :new, :create]
   resources :cart_products, only: [:create, :destroy]
-  resources :carts, only: [:show, :update]
+  # resources :carts, only: [:show, :update]
+  get '/cart', to: 'carts#show'
   resources :orders, only: [:show]
 end

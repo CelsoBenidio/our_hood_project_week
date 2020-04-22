@@ -1,11 +1,13 @@
 <div class="product-index-container">
   <div class="link">
     <%= link_to "Add a new product", new_product_path, class: "btn-rounded-primary" %>
+    <%= link_to "Go to the cart", cart_path, class: "btn-rounded-primary" %>
+
   </div>
   <div class="row">
-    <div class="scrolling-wrapper">
+    <div class="scrolling-wrapper w-100">
       <% @products.each do |product| %>
-      <div class="col-6">
+      <div class="col-12 col-lg-5">
         <div class="card mb-5 product-card">
           <div class="row">
             <div class="col-6 px-0 product-image" style="background-image: url('<%= product.photo.attached? ? cl_image_path(product.photo.key) : product.default_picture %>')">
