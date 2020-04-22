@@ -1,5 +1,8 @@
 <div class="container">
-  <h1>New Product</h1>
+  <h1><strong>New Product</strong></h1>
 
   <%= render 'form', product: @product %>
+  <div class="link">
+    <%= link_to "Back to all products", products_path, class:"btn-rounded-primary" %>
+  </div>
 </div>

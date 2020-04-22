@@ -1,32 +1,36 @@
-<div class="container">
+<div class="product-index-container">
   <div class="link">
     <%= link_to "Add a new product", new_product_path, class: "btn-rounded-primary" %>
   </div>
+  <div class="row">
 
-  <% @products.each do |product| %>
-  <div class="product_container">
-    <div class="images">
-      <img src="http://mistillas.cl/wp-content/uploads/2018/04/Nike-Epic-React-Flyknit-%E2%80%9CPearl-Pink%E2%80%9D-01.jpg", id="product-img" />
-    </div>
-    <div class="product">
-      <p id="category_name"><%= product.category %></p>
-      <h1 id="product_name"><%= product.name %></h1>
-      <h2 id="price"><%= product.price %>₺</h2>
-      <p class="desc"><%= product.description %></p>
-      <div class="buttons">
-        <% if current_user.cart.products.include?(product) %>
-        <%= simple_form_for CartProduct.where(product: product, cart: current_user.cart).first, :method => :delete do |f| %>
-        <%= f.submit "Remove from cart", class: "card_button" %>
-        <% end %>
-        <% else %>
-        <%= simple_form_for @cart_product do |f| %>
-        <%= f.hidden_field :product_id, value: product.id  %>
-        <%= f.submit "Add to cart", class: "card_button" %>
-        <% end %>
-        <% end %>
-        <!-- <button class="like"><span>♥</span></button> -->
+    <% @products.each do |product| %>
+    <div class="col">
+      <div class="product_container">
+        <div class="images">
+          <img src="http://mistillas.cl/wp-content/uploads/2018/04/Nike-Epic-React-Flyknit-%E2%80%9CPearl-Pink%E2%80%9D-01.jpg", id="product-img" />
+        </div>
+        <div class="product">
+          <p id="category_name"><%= product.category %></p>
+          <h1 id="product_name"><%= product.name %></h1>
+          <h2 id="price"><%= product.price %>₺</h2>
+          <p class="desc"><%= product.description %></p>
+          <div class="buttons">
+            <% if current_user.cart.products.include?(product) %>
+            <%= simple_form_for CartProduct.where(product: product, cart: current_user.cart).first, :method => :delete do |f| %>
+            <%= f.submit "Remove from cart", class: "card_button" %>
+            <% end %>
+            <% else %>
+            <%= simple_form_for @cart_product do |f| %>
+            <%= f.hidden_field :product_id, value: product.id  %>
+            <%= f.submit "Add to cart", class: "card_button" %>
+            <% end %>
+            <% end %>
+            <!-- <button class="like"><span>♥</span></button> -->
+          </div>
+        </div>
       </div>
     </div>
+    <% end %>
   </div>
-  <% end %>
 </div>
