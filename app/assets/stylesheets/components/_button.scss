@@ -40,36 +40,4 @@
   border-radius: 50px;
 }
 
-.form-button {
-  color: white;
-  padding: 8px 24px;
-  border-radius: 4px;
-  font-weight: bold;
-  background: linear-gradient(#10E380, #0DBF6C);
-  transition: background 0.3s ease;
-  border: 1px solid #0DBF6C;
-  margin-bottom: 5px;
-}
 
-.form-button:hover {
-  background: linear-gradient(#0DBF6C, #10E380);
-  color: white;
-}
-
-.form-secondary-button {
-  color: white;
-  padding: 8px 24px;
-  border-radius: 4px;
-  font-weight: bold;
-  background: #EE4266;
-  transition: background 0.3s ease;
-  border: 1px solid #0DBF6C;
-
-}
-
-.form-secondary-button:hover {
-  color: white;
-  text-decoration: none;
-  background: #EE4266;
-
-}

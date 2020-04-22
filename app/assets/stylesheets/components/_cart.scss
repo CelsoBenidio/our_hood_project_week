@@ -1,0 +1,65 @@
+.cart-product {
+  height: 120px;
+}
+
+.cart-product img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.cart-product h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.cart-product p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+
+.cart-product .cart-product-infos {
+  padding: 16px;
+}
+
+
+
+.cart {
+  font-family: Roboto;
+}
+
+.cart-header {
+  font-size: 25px;
+  text-align: center;
+
+}
+
+.cart-text {
+  font-size: 20px;
+  text-align: center;
+}
+
+.cart-title {
+  font-size: 22px;
+  text-align: center;
+}
+
+.cart-bg{
+  background: url("https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg") no-repeat;
+  background-size:cover;
+  background-position: center top;
+  height: 400px;
+  width: 100%;
+}
+
+@media (max-width: 992px){
+  .products-container{
+  border-right: none !important;
+  border-bottom: 1px solid $primary;
+  }
+}
