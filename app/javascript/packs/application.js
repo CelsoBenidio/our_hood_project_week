@@ -5,7 +5,8 @@ require("jquery")
 
 import "bootstrap";
 
-import { replaceLabelWithDiv, replaceFieldsetWithDiv } from './plugins/customRadioButtons'
+import { replaceLabelWithDiv, replaceFieldsetWithDiv, handleCheckboxState } from './plugins/customRadioButtons'
 
 replaceLabelWithDiv()
 replaceFieldsetWithDiv()
+handleCheckboxState()

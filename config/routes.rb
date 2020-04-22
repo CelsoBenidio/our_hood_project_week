@@ -14,6 +14,5 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :new, :create]
   resources :cart_products, only: [:create, :destroy]
   resources :carts, only: [:show, :update]
-
   resources :orders, only: [:show]
 end

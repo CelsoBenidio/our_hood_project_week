@@ -3,3 +3,13 @@
   text-align: center;
 }
 
+.form-container {
+  margin: 30px;
+}
+
+.scrolling-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}

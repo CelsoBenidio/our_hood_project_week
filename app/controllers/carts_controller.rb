@@ -12,7 +12,7 @@ class CartsController < ApplicationController
     redirect_to root_path
   end
 
-  private
+private
 
   def cart_params
     params.require(:cart).permit(:box_id)
