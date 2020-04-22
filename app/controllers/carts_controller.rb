@@ -5,6 +5,9 @@ class CartsController < ApplicationController
     redirect_to root_path
   end
 
+  def show
+  end
+
   def cart_params
     params.require(:cart).permit(:box_id)
   end
