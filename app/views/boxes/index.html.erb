@@ -1,7 +1,7 @@
 <div class="row bg-light">
   <div class="col-12 col-lg-6">
-    <h3 class="font-weight-bold text-left">What do you receive?</h3>
-    <p>"You receive a new gift box from the neighborhood of your choice loaded with items that fit your tastes and preferences. And you will be supporting the local economy of your own neighborhood or one you choose to explore. Each month will be a happy surprise for you."</p>
+    <h3 class="font-weight-bold text-left px-1 py-2">What do you receive?</h3>
+    <p>You receive a new gift box from the neighborhood of your choice loaded with items that fit your tastes and preferences. And you will be supporting the local economy of your own neighborhood or one you choose to explore. Each month will be a happy surprise for you.</p>
     <div class="row d-flex align-items-center">
       <img src="https://res.cloudinary.com/drjk0oilg/image/upload/v1587543071/nrvvrumahrbxoktbiji6.png" alt="gift box" class="boxes-img float-left border border-primary m-2">
       <img src="https://res.cloudinary.com/drjk0oilg/image/upload/v1587543874/wgpxmwji9fzojblcn6dw.png" alt="birthday box" class="boxes-img float-center border border-primary m-2">
@@ -11,7 +11,7 @@
   </div>
   <div class="col-12 col-lg-6">
     <% @boxes.each do |box|  %>
-    <div class="card border border-primary mb-2">
+    <div class="card border border-primary mt-2">
       <div class="bg-transparent d-flex justify-content-between px-3 py-2">
         <h4 class="text-primary font-weight-bold text-left mb-0"><%= box.name %></h4>
         <h3 class="text-primary card-title font-weight-bold text-right mb-0"><%= "#{box.price} TL" %></h3>
