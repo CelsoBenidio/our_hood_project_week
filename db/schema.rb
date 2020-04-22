@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_21_111222) do
+ActiveRecord::Schema.define(version: 2020_04_22_121724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,10 +68,10 @@ ActiveRecord::Schema.define(version: 2020_04_21_111222) do
     t.string "name"
     t.string "age"
     t.string "gender"
-    t.string "favorite_product"
-    t.string "visit_frequency"
-    t.string "issue"
-    t.string "needed_product"
+    t.string "favorite_product", default: [], array: true
+    t.string "visit_frequency", default: [], array: true
+    t.string "issue", default: [], array: true
+    t.string "needed_product", default: [], array: true
     t.index ["user_id"], name: "index_preferences_on_user_id"
   end
 

@@ -1,7 +1,7 @@
 SURVEY = {
   QUESTIONS: [
     {
-      content: 'First things first, tell us about your name.',
+      content: 'First things first, tell us your name.',
       id: 'name',
       type: 'text'
     },
@@ -66,3 +66,8 @@ SURVEY = {
     }
   ]
 }
+
+
+# add a new type radio (to accept only one answer)
+# show radio button instead of checkbox
+# duplicate CSS and JS
