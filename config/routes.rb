@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'preferences/new'
   get 'how-it-works', to: 'pages#how-it-works'
   get 'about-us', to: 'pages#about-us'
