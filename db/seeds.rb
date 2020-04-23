@@ -17,9 +17,9 @@ first_user.preference = Preference.create()
 
 # 4 - Add box to the order
 
-first_box = Box.create(name: 'Basic plan', price: 40, description: "the most suitable for you", category: "electronics")
-second_box = Box.create(name: 'Premium plan', price: 60, description: "the most suitable for you", category: "electronics")
-third_box = Box.create(name: 'Pro plan', price: 80, description: "the most suitable for you", category: "electronics")
+first_box = Box.create(name: 'Basic plan', price: 40, description: "the most suitable for you", category: "confections")
+second_box = Box.create(name: 'Premium plan', price: 60, description: "the most suitable for you", category: "confections")
+third_box = Box.create(name: 'Pro plan', price: 80, description: "the most suitable for you", category: "confections")
 
 # 3 - Create Order
 first_order = Order.create(delivery_status: 1, box_id: first_box.id)
