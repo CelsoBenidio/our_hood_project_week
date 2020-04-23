@@ -8,13 +8,7 @@
 .card.border.border-primary.mt-2 {
   border-radius: 25px;
   box-shadow: 4px 4px 2px rgba(0, 0, 0, .3);
-  opacity: .5;
-}
-
-.card.border.border-primary.mt-2:hover {
-  opacity: 1;
-  transition: opacity 500ms cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s;
-}
+ }
 
 .presents-img.float-right.border.border-primary.m-2 {
   height: 213px;
@@ -24,10 +18,16 @@
 }
 
 .boxes.btn.btn-primary.btn-sm {
-  border-radius: 25px;
+  border-radius: 50px;
   box-shadow: 4px 4px 2px rgba(0, 0, 0, .3);
+    :hover {
+      background-color: #0DBF6C;
+      color: white;
+      font-weight: bold;
+    }
 }
 
 .btn {
   color: white;
+  text-transform: uppercase;
 }
