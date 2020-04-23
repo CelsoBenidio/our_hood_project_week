@@ -1,6 +1,6 @@
 .boxes-img {
-  max-height: 213px;
-  width: 260px;
+  height: 175px;
+  width: 200px;
   box-shadow: 4px 4px 2px rgba(0, 0, 0, .3);
   border-radius: 25px;
 }
@@ -11,8 +11,8 @@
  }
 
 .presents-img.float-right.border.border-primary.m-2 {
-  height: 213px;
-  max-width: 260px;
+  height: 175px;
+  width: 200px;
   box-shadow: 4px 4px 2px rgba(0, 0, 0, .3);
   border-radius: 25px;
 }
@@ -30,4 +30,8 @@
 .btn {
   color: white;
   text-transform: uppercase;
+}
+
+.col-12.col-lg-6.bottom{
+  margin-bottom: 150px;
 }
