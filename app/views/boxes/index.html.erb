@@ -18,7 +18,7 @@
       </div>
       <div class="card-body">
         <p class="card-text">
-          With this plan you will receive a surprise box of tailored <%= current_user.preference.stringify_categories %> items, among others
+          With this plan you will receive a surprise box of tailored <%= current_user.preference.stringify_categories %> among other items.
         </p>
         <%= simple_form_for @cart, url: cart_path(@cart) do |f|%>
         <%= f.hidden_field :box_id, value: box.id %>

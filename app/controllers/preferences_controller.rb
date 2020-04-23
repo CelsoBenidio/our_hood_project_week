@@ -8,7 +8,7 @@ class PreferencesController < ApplicationController
     @preference.user = current_user
 
     if @preference.save
-      redirect_to root_path
+      redirect_to boxes_path
     end
   end
 
