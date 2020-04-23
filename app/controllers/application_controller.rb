@@ -1,8 +1,13 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
+  
   before_action :current_or_guest_user
 
   helper_method :current_or_guest_user
+  
+  def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
 
   def current_or_guest_user(is_new = false)
     if current_user
