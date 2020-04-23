@@ -15,6 +15,14 @@ class PreferencesController < ApplicationController
   private
 
   def preference_params
-    params.require(:preference).permit(:name, :age => [], :gender => [], :favorite_product => [], :visit_frequency => [], :issue => [], :needed_product => [])
+    params.require(:preference).permit(
+      :name,
+      :age => [],
+      :gender => [],
+      :favorite_product => [],
+      :visit_frequency => [],
+      :issue => [],
+      :needed_product => []
+    )
   end
 end
