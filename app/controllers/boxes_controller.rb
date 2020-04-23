@@ -1,4 +1,6 @@
 class BoxesController < ApplicationController
+    skip_before_action :authenticate_user!, only: [:index]
+
   def index
     # atm we're loading all the boxes
     # @boxes = Box.all
@@ -22,6 +24,7 @@ class BoxesController < ApplicationController
     # Is Box3.category included in ["clothing", "electronics"] -> True
 
     # result -> Box2 and Box3
-    @cart = current_user.cart
+    @cart = current_or_guest_user.cart
+
   end
 end
