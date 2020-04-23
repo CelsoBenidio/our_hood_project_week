@@ -4,9 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
-  has_many :orders
-  has_one :preference
-  has_one :cart
+  has_many :orders, dependent: :destroy
+  has_one :preference, dependent: :destroy
+  has_one :cart, dependent: :destroy
 
 
 
@@ -19,7 +19,7 @@ private
 
 
 def add_cart_to_user
-  self.cart = Cart.create
+ self.cart = Cart.create unless self.cart
 end
 
 
