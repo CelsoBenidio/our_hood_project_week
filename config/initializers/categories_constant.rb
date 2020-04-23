@@ -1,1 +1,3 @@
-CATEGORIES = ["clothing", "electronics", "art and crafts", "home and kitchen", "tools and home improvements", "gift cards"]
+CATEGORIES = ["confections", "non-alcholic beverages",
+  "crafts", "accessories", "beauty products", "gift cards",
+  "hats and scarves", "alcholic beverages", "stationaries"]

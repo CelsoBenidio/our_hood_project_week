@@ -63,7 +63,7 @@ SURVEY = {
       ]
     },
     {
-      content: 'What are you looking to find when you explore shops in a new neighborhood or street?',
+      content: 'What are you looking to find when you explore shops?',
       id: 'needed_product',
       type_order: '7 of 7',
       type: 'text'
