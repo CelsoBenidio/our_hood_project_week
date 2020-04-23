@@ -35,15 +35,7 @@ SURVEY = {
       id: 'favorite_product',
       type_order: '4 of 7',
       type_select: 'Select all that apply',
-      options: [
-        'Clothing',
-        'Food',
-        'Electronics',
-        'Art & Crafts',
-        'Home & Kitchen',
-        'Tools and Home Improvement',
-        'Gift Cards'
-      ]
+      options: CATEGORIES
     },
     {
       content: 'How often do you visit them?',
