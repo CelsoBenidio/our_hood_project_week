@@ -9,13 +9,21 @@ class PreferencesController < ApplicationController
     @preference.user = current_or_guest_user
 
     if @preference.save
-      redirect_to root_path
+      redirect_to boxes_path
     end
   end
 
   private
 
   def preference_params
-    params.require(:preference).permit(:name, :age => [], :gender => [], :favorite_product => [], :visit_frequency => [], :issue => [], :needed_product => [])
+    params.require(:preference).permit(
+      :name,
+      :age => [],
+      :gender => [],
+      :favorite_product => [],
+      :visit_frequency => [],
+      :issue => [],
+      :needed_product => []
+    )
   end
 end
