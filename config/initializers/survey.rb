@@ -37,7 +37,6 @@ SURVEY = {
       type_select: 'Select all that apply',
       options: [
         'Clothing',
-        'Food',
         'Electronics',
         'Art & Crafts',
         'Home & Kitchen',
