@@ -1,1 +1,1 @@
-CATEGORIES = %i[shoes sunglasses food accessories jewellery vintage clothes technology music books headphones game hoby pet]
+CATEGORIES = ["clothing", "electronics", "art and crafts", "home and kitchen", "tools and home improvements", "gift cards"]
