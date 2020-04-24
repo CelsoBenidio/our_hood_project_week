@@ -1,13 +1,13 @@
 class CartsController < ApplicationController
-
+  skip_before_action :authenticate_user!, only: [:show, :update]
   def show
-    @cart = current_user.cart
+    @cart = current_or_guest_user.cart
     @box = @cart.box
     @products = @cart.products
   end
 
   def update
-    @cart = current_user.cart
+    @cart = current_or_guest_user.cart
     @cart.update(cart_params)
     if cart_params[:box_id] == ""
     redirect_to boxes_path
