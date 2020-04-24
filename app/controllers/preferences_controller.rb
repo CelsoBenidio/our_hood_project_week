@@ -17,12 +17,12 @@ class PreferencesController < ApplicationController
   def preference_params
     params.require(:preference).permit(
       :name,
-      :age => [],
-      :gender => [],
+      :age,
+      :gender,
+      :visit_frequency,
+      :needed_product,
       :favorite_product => [],
-      :visit_frequency => [],
-      :issue => [],
-      :needed_product => []
+      :issue => []
     )
   end
 end
