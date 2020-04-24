@@ -1,4 +1,5 @@
 class Preference < ApplicationRecord
+
   belongs_to :user
 
   def stringify_categories
@@ -11,4 +12,5 @@ class Preference < ApplicationRecord
     # after the reverse -> "stfig ,gnihtolc ,scinortcele"
     categories.reverse.sub(',', ' and'.reverse).reverse
   end
+
 end
