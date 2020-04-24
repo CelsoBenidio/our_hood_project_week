@@ -21,13 +21,14 @@ SURVEY = {
       ]
     },
     {
-      content: 'Are you male or female?',
+      content: 'What is your gender?',
       id: 'gender',
       type: 'radio',
       type_order: '3 of 7',
       options: [
         'male',
-        'female'
+        'female',
+        'prefer not to answer'
       ]
     },
     {

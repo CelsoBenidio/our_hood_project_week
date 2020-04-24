@@ -9,8 +9,11 @@ class CartsController < ApplicationController
   def update
     @cart = current_user.cart
     @cart.update(cart_params)
-
-    redirect_to products_path
+    if cart_params[:box_id] == ""
+    redirect_to boxes_path
+    else
+      redirect_to products_path
+    end
   end
 
   private

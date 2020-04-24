@@ -11,7 +11,7 @@ class CartProductsController < ApplicationController
     # /cart_products/1 -> 1 is the id of CartProduct
     @cart_product = CartProduct.find(params[:id])
     @cart_product.destroy
-    redirect_to products_path
+    redirect_back(fallback_location: products_path)
   end
 
   def cart_product_params

@@ -1,3 +1,12 @@
+<div>
+  <h1 class="text-center font-weight-lighter mt-5">Tell us how you get ready.</h1>
+    <p class="text-center font-weight-lighter">This will help us customize a box of products just for you.</p>
+      <img src="https://images.pexels.com/photos/264771/pexels-photo-264771.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="img-fluit img-fluit w-25 p-3 rounded mx-auto d-block shadow-sm p-3 mb-5 bg-white rounded" alt="Responsive image">
+    <div class="align-items-center">
+    <p class="text-center font-weight-lighter">Let's get started</p>
+    <a href="#name-section"><img src="https://img.icons8.com/ios/50/000000/low-importance.png" class="arrow-down-icon rounded mx-auto d-block"></a>
+    </div>
+</div>
 <div class="preferences-new-page">
     <%= simple_form_for @preference, url: preferences_path do |f| %>
       <% SURVEY[:QUESTIONS].each_with_index do |question, index| %>
@@ -7,11 +16,13 @@
           <p class="font-weight-light"> <%= question[:type_select] %> </p>
           <% if question[:type] == 'text' %>
             <%= f.input question[:id].to_sym, class: "input-bar" %>
+            <% elsif question[:type] == 'radio' %>
+              <%= f.input question[:id].to_sym, as: :radio_buttons, collection: question[:options], label: "" %>
           <% else %>
             <%= f.input question[:id].to_sym, as: :check_boxes, collection: question[:options], label: "" %>
           <% end %>
           <% if index != SURVEY[:QUESTIONS].length - 1%>
-            <a class="btn-rounded-primary" href="#<%= SURVEY[:QUESTIONS][index + 1][:id]%>-section"> Next </a>
+            <a class="btn-lg-rounded-primary" href="#<%= SURVEY[:QUESTIONS][index + 1][:id]%>-section"> Next </a>
           <% else %>
             <%= f.button :submit, "View Recommendations", class: "btn-rounded-primary" %>
           <% end %>
@@ -19,3 +30,4 @@
       <% end %>
     <% end %>
  </div>
+

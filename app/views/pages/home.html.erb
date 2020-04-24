@@ -22,25 +22,32 @@
 
 <div class="container text-center p-3", id="homepage-main-container", style="margin-top: 40px">
   <h2 class="mb-4"><b>Here's how OurHood works</b></h2>
-  <p class="mb-5">No commitments. No contracts. No stringgs attached. Forever.</p>
-  <div class="row" style="justify-content: center">
-    <div class="info-cards col-12 col-lg-4">
-     <div class="info-card">
-      <%= image_tag "product.svg", class: "info-card-img" %>
-      <h4><b>Curated For You</b></h4>
-      <p>Discover a selection of products that fits your needs and personal taste.</p>
-    </div>
-  </div>
-    <div class="info-card">
-      <%= image_tag "apply.svg", class: "info-card-img" %>
-      <h4><b>Delivered To You</b></h4>
-      <p>The most unique Istanbul stores delivered to your most convenient address.</p>
-    </div>
-    <div class="info-card">
-      <%= image_tag "learn.svg", class: "info-card-img" %>
-      <h4><b>Adapted To You</b></h4>
-      <p>Free delivery and you can cancel your monthly plan at anytime with no penalties.</p>
-    </div>
-  </div>
-  <a class="btn btn-lg-rounded-primary" href="<%= new_preference_path %>" style="margin-bottom: 150px">Start now ➜</a>
+  <p class="mb-3">No commitments. No contracts. No stringgs attached. Forever.</p>
 </div>
+
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="info-card m-4 col-12 col-lg-3">
+        <%= image_tag "itemsbox.png", class: "info-card-img mb-4" %>
+        <h4><b>Adapted To You</b></h4>
+        <p>Free delivery and you can cancel your monthly plan anytime without penalties.</p>
+      </div>
+      <div class="info-card m-4 col-12 col-lg-3">
+        <%= image_tag "foryou.png", class: "info-card-img mb-4" %>
+        <h4><b>Curated For You</b></h4>
+        <p>Discover a selection of products that fits your needs and personal taste.</p>
+      </div>
+      <div class="info-card m-4 col-12 col-lg-3">
+        <%= image_tag "openbox.png", class: "info-card-img mb-4" %>
+        <h4><b>Delivered To You</b></h4>
+        <p>The most unique Istanbul stores delivered to your most convenient address.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div class="container">
+    <div class="row justify-content-center">
+  <a class="btn btn-lg-rounded-primary" href="<%= new_preference_path %>" style="margin-bottom: 150px">Start now ➜</a>
+  </div>

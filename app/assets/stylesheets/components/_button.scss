@@ -7,19 +7,7 @@
   border-radius: 50px;
 }
 
-@media only screen and (max-width: 1090px) {
-  .btn-rounded-primary {
-    display: block;
-    padding: 0.5rem 0;
-    color: $primary;
-    background-color: transparent;
-    border-radius: unset;
-  }
-  .btn-rounded-primary:hover{
-  background-color: transparent !important;
-  color: #159a5f !important;
-  }
-}
+
 
 .btn-rounded-primary:hover{
   background-color: #0DBF6C;

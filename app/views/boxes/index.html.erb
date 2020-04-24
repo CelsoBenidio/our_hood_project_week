@@ -15,7 +15,7 @@
       <div class="card border border-primary mt-2">
         <div class="bg-transparent d-flex justify-content-between px-3 py-2">
           <h4 class="text-primary font-weight-bold text-left mb-0"><%= box.name %></h4>
-          <h3 class="text-primary card-title font-weight-bold text-right mb-0"><%= "#{box.price}" %></h3>
+          <h3 class="text-primary card-title font-weight-bold text-right mb-0"><%= "#{box.price}" %>₺</h3>
         </div>
         <div class="card-body">
           <% if current_or_guest_user.preference %>
@@ -27,7 +27,7 @@
           <%= simple_form_for @cart, url: cart_path do |f| %>
             <%= f.hidden_field :box_id, value: box.id %>
             <div class="boxes btn btn-primary text-white btn-sm">
-              <%= f.button :submit %>
+              <%= f.submit "Add to cart", class: "bg-transparent text-white border-0" %>
             </div>
           <% end %>
         </div>
