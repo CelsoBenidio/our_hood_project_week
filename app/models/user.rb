@@ -8,21 +8,10 @@ class User < ApplicationRecord
   has_one :preference, dependent: :destroy
   has_one :cart, dependent: :destroy
 
+  after_create :add_cart_to_user
 
-
-
-after_create :add_cart_to_user
-
-
-
-private
-
-
-def add_cart_to_user
- self.cart = Cart.create unless self.cart
-end
-
-
-
-
+  private
+  def add_cart_to_user
+  self.cart = Cart.create unless self.cart
+  end
 end

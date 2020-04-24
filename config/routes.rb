@@ -15,15 +15,51 @@ Rails.application.routes.draw do
   resources :preferences, only: [:new, :create]
   resources :boxes, only: [:index]
 
-
-  # resources :carts, only: [:show]
   get '/cart', to: 'carts#show'
+  patch '/cart', to: 'carts#update'
 
   resources :products, only: [:index, :new, :create]
   resources :cart_products, only: [:create, :destroy]
-  resources :carts, only: [:show, :update]
 
   resources :orders, only: [:show, :create] do
     resources :payments, only: :new
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
