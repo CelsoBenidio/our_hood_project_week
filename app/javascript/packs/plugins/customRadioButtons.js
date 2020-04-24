@@ -1,5 +1,19 @@
 const replaceLabelWithDiv = () => {
-  const radioButtons = document.querySelectorAll('.section--radio input.check_boxes')
+  const checkBoxes = document.querySelectorAll('.section--radio input.check_boxes')
+  const radioButtons = document.querySelectorAll('.section--radio input.radio_buttons')
+
+  checkBoxes.forEach((checkBox) => {
+    const parent = checkBox.parentNode
+    const label = parent.querySelector('label')
+
+    const labelText = label.innerText
+
+    const newDiv = document.createElement('div')
+    newDiv.classList.add('radio-tile')
+    newDiv.innerHTML = `<label class="tile--label">${labelText}</label>`
+
+    parent.replaceChild(newDiv, label)
+  })
 
   radioButtons.forEach((radioButton) => {
     const parent = radioButton.parentNode
@@ -50,5 +64,9 @@ const handleCheckboxState = () => {
     }
   })
 }
+
+// ----------------------------------------------------------------------------------
+
+
 
 export { replaceLabelWithDiv, replaceFieldsetWithDiv, handleCheckboxState }

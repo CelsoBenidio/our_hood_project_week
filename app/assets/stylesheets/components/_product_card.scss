@@ -3,9 +3,11 @@
   box-shadow: 5px 5px 15px rgba(200,200,200,0.5);
 
   .product-image {
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
   }
 }
 

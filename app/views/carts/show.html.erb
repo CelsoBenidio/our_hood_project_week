@@ -1,63 +1,81 @@
 <div class="container-fluid justify-content-center">
-  <% if @cart.products.count <= 0 %>
-  <div class="row">
+  <% if !@cart.products.any? && !@cart.box %>
+  <div class="row justify-content-center">
     <div class="link">
-      <%= link_to "Explore our offers", products_path, class: "btn-rounded-primary" %>
+      <%= link_to "Explore Our Hood", new_preference_path, class: "btn-rounded-primary" %>
     </div>
-    <h1 class= "text-center text-primary mt-3">No items in your cart yet</h1>
   </div>
+    <h1 class="text-center text-primary mt-3">No items in your cart yet</h1>
   <% else %>
   <div class="row justify-content-center">
     <div class="link">
-      <%= link_to "Proceed to Checkout", new_product_path, class: "btn-rounded-primary" %>
+      <%= form_tag orders_path do %>
+      <%= submit_tag 'Proceed to Checkout', class: 'btn-rounded-primary border-0' %>
+      <% end %>
     </div>
   </div>
   <div class="row">
+    <% if @cart.products.any? %>
     <div class="col-12 col-lg-6 border-right border-primary products-container pb-3 pb-lg-0 pr-0 pr-lg-5">
       <h2 class="text-center text-primary" style="font-family: Roboto;"> Your Products</h2>
       <% @products.each do |product| %>
-      <div class="cart-product bg-white shadow d-flex align-items-center mb-3 w-100">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-        <div class="cart-product-infos w-100 py-2">
-          <h2><%= product.name %></h2>
-          <p><%= product.description %></p>
-          <p><%= product.price %>₺</p>
-          <p><%= product.category %></p>
-
-          <div class="d-flex justify-content-end">
-            <% if current_user.cart.products.include?(product) %>
-            <%= simple_form_for CartProduct.where(product: product, cart: current_user.cart).first, :method => :delete do |f| %>
-            <%= f.submit "Remove from cart", class: "btn btn-primary text-white" %>
-            <% end %>
-            <% else %>
-            <%= simple_form_for @cart_product do |f| %>
-            <%= f.hidden_field :product_id, value: product.id  %>
-            <%= f.submit "Move to the wishlist", class: "btn btn-primary text-white" %>
-            <% end %>
-            <% end %>
+      <div class="card mb-5 product-card">
+        <div class="row">
+          <div class="col-6 px-0 product-image" style="background-image: url('<%= product.photo.attached? ? cl_image_path(product.photo.key) : product.default_picture %>')">
+          </div>
+          <div class=" col-6">
+            <p id="category_name" class="pt-3"><%= product.category %></p>
+            <h1 id="product_name"><%= product.name %></h1>
+            <h2 id="price"><%= product.price %>₺</h2>
+            <div class="py-3">
+              <p class="desc"><%= product.description %></p>
+              <div class="prdct-buttons">
+                <% if current_user.cart.products.include?(product) %>
+                <%= simple_form_for CartProduct.where(product: product, cart: current_user.cart).first, :method => :delete do |f| %>
+                <%= f.submit "Remove from cart", class: "card_button" %>
+                <% end %>
+                <% else %>
+                <%= simple_form_for @cart_product do |f| %>
+                <%= f.hidden_field :product_id, value: product.id  %>
+                <%= f.submit "Add to cart", class: "card_button" %>
+                <% end %>
+                <% end %>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       <% end %>
     </div>
-
-    <div class="col-12 col-lg-6 pt-3 pt-lg-0 pl-0 pl-lg-5">
-      <h2 class="text-center text-primary"> Your Box</h2>
-      <div class="cart card text-white bg-primary w-100">
-        <div class="cart-header card-header"><%= @box&.name %></div>
+    <% end %>
+    <% if @cart.box %>
+    <div class="col-12 col-lg-6 bottom <%= @cart.products.any? ? '' : 'mx-auto' %>">
+      <h2 class="text-center text-primary" style="font-family: Roboto;"> Your Box</h2>
+      <div class="card border border-primary mt-2">
+        <div class="bg-transparent d-flex justify-content-between px-3 py-2">
+          <h4 class="text-primary font-weight-bold text-left mb-0"><%= @box&.name %></h4>
+          <h3 class="text-primary card-title font-weight-bold text-right mb-0"><%= @box&.price %>₺</h3>
+        </div>
         <div class="card-body">
-          <div class="row">
-            <div class="col cart-bg"></div>
-            <div class="col">
-          <h5 class="cart-title card-title mb-5 mt-5"><%= @box&.description %></h5>
-          <p class="cart-text card-text mt-5"> <%= @box&.price %>₺</p>
-
-            </div>
-          </div>
+          <%= @box&.description %>
+          <p class="card-text">
+            With this plan you will receive a surprise box of tailored items, among other surprises.</p>
+            <%= simple_form_for @cart, url: cart_path do |f| %>
+              <%= f.hidden_field :box_id, value: nil %>
+              <div class="boxes btn btn-primary text-white btn-sm">
+                <%= f.submit "Remove from cart", class: "bg-transparent text-white border-0" %>
+              </div>
+            <% end %>
         </div>
       </div>
     </div>
     <% end %>
+    <% end %>
   </div>
+</div>
+
+
+
+
 
 

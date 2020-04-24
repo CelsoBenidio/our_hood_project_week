@@ -21,13 +21,14 @@ SURVEY = {
       ]
     },
     {
-      content: 'Are you male or female?',
+      content: 'What is your gender?',
       id: 'gender',
       type: 'radio',
       type_order: '3 of 7',
       options: [
         'male',
-        'female'
+        'female',
+        'prefer not to answer'
       ]
     },
     {
@@ -35,15 +36,7 @@ SURVEY = {
       id: 'favorite_product',
       type_order: '4 of 7',
       type_select: 'Select all that apply',
-      options: [
-        'Clothing',
-        'Food',
-        'Electronics',
-        'Art & Crafts',
-        'Home & Kitchen',
-        'Tools and Home Improvement',
-        'Gift Cards'
-      ]
+      options: CATEGORIES
     },
     {
       content: 'How often do you visit them?',
@@ -71,7 +64,7 @@ SURVEY = {
       ]
     },
     {
-      content: 'What are you looking to find when you explore shops in a new neighborhood or street?',
+      content: 'What are you looking to find when you explore shops?',
       id: 'needed_product',
       type_order: '7 of 7',
       type: 'text'

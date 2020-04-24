@@ -6,7 +6,7 @@
     <h1>The best local shops of <strong>Istanbul</strong></h1>
     <h2 class="text-center">Thousands of the most unique products from Istanbul's most authentic stores.</h2>
     <p style="margin-top: 15px">FROM 45TL/SUBSCRIPTION</p>
-    <a class="btn btn-lg-rounded-primary" href="<%= preferences_new_path %>">Start now ➜</a>
+    <a class="btn btn-lg-rounded-primary" href="<%= new_preference_path %>">Start now ➜</a>
   </div>
 </div>
 
@@ -14,7 +14,7 @@
 <div class="container text-center mt-3 mt-lg-5", id="homepage-main-container">
   <h2 style="margin-bottom: 20px"><b>Missing your favorite local shops?</b></h2>
   <p style="margin-bottom: 40px">Receive your personalised box of 5 handpicked products every month perfectly suited to your needs.</p>
-   <a class="btn btn-lg-rounded-primary" href="<%= preferences_new_path %>" style="margin-bottom: 40px">Tell me more ➜</a>
+   <a class="btn btn-lg-rounded-primary" href="<%= new_preference_path %>" style="margin-bottom: 40px">Tell me more ➜</a>
 </div>
 </div>
 
@@ -22,34 +22,39 @@
 
 <div class="container text-center p-3", id="homepage-main-container", style="margin-top: 40px">
   <h2 class="mb-4"><b>Here's how OurHood works</b></h2>
-  <p class="mb-5">No commitments. No contracts. No stringgs attached. Forever.</p>
-  <div class="row" style="justify-content: center">
-    <div class="info-cards col-12 col-lg-4">
-     <div class="info-card">
-      <%= image_tag "product.svg", class: "info-card-img" %>
-      <h4><b>Curated For You</b></h4>
-      <p>Discover a selection of products that fits your needs and personal taste.</p>
-    </div>
-  </div>
-    <div class="info-card">
-      <%= image_tag "apply.svg", class: "info-card-img" %>
-      <h4><b>Delivered To You</b></h4>
-      <p>The most unique Istanbul stores delivered to your most convenient address.</p>
-    </div>
-    <div class="info-card">
-      <%= image_tag "learn.svg", class: "info-card-img" %>
-      <h4><b>Adapted To You</b></h4>
-      <p>Free delivery and you can cancel your monthly plan at anytime with no penalties.</p>
-    </div>
-  </div>
-  <a class="btn btn-lg-rounded-primary" href="<%= preferences_new_path %>" style="margin-bottom: 150px">Start now ➜</a>
+  <p class="mb-3">No commitments. No contracts. No stringgs attached. Forever.</p>
 </div>
 
-<div class="bck">
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="info-card m-4 col-12 col-lg-3">
+        <%= image_tag "itemsbox.png", class: "info-card-img mb-4" %>
+        <h4><b>Adapted To You</b></h4>
+        <p>Free delivery and you can cancel your monthly plan anytime without penalties.</p>
+      </div>
+      <div class="info-card m-4 col-12 col-lg-3">
+        <%= image_tag "foryou.png", class: "info-card-img mb-4" %>
+        <h4><b>Curated For You</b></h4>
+        <p>Discover a selection of products that fits your needs and personal taste.</p>
+      </div>
+      <div class="info-card m-4 col-12 col-lg-3">
+        <%= image_tag "openbox.png", class: "info-card-img mb-4" %>
+        <h4><b>Delivered To You</b></h4>
+        <p>The most unique Istanbul stores delivered to your most convenient address.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+  <a class="btn btn-lg-rounded-primary" href="<%= new_preference_path %>" style="margin-bottom: 150px">Start now ➜</a>
+  </div>
+
+  <div class="bck">
   <div class="container">
       <div class="faq mb-5">
     <%= render 'faq' %>
     </div>
   </div>
 </div>
-

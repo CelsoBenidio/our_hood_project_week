@@ -13,6 +13,8 @@ class Product < ApplicationRecord
 
   enum category: CATEGORIES
 
+  monetize :price_cents
+
   def default_picture
     'https://res.cloudinary.com/drjk0oilg/image/upload/v1587560865/insert-image_kaj4ea.png'
   end
