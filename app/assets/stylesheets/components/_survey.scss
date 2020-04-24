@@ -15,11 +15,7 @@
 
   &.section--radio {
 
-    div.form-group.check_boxes.optional.preference_gender {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-    div.check_boxes {
+    div.check_boxes, div.radio_buttons {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       grid-column-gap: 15px;
@@ -34,7 +30,7 @@
       position: relative;
       padding-left: 0;
 
-      input.check_boxes {
+      input.check_boxes, input.radio_buttons {
         opacity: 0;
         position: absolute;
         top: 0;
@@ -71,7 +67,7 @@
       }
 
       //active tile styles
-      input.check_boxes:checked + .radio-tile {
+      input.check_boxes:checked + .radio-tile, input.radio_buttons:checked + .radio-tile {
         background-color: #10E380;
         border: 0.5px solid #0DBF6C;
         color: white;
@@ -87,11 +83,15 @@
 }
 
 @media only screen and (max-width: 768px) {
-  div.check_boxes {
+  div.check_boxes, div.radio_buttons {
     grid-template-columns: 1fr 1fr !important;
   }
   .radio-tile {
     width: 150px !important;
     height: 150px !important;
   }
+}
+
+.w-25 {
+  width: 510px !important;
 }
