@@ -1,20 +1,21 @@
 <div class="container-fluid justify-content-center">
-  <% if @cart.products.count <= 0 %>
-  <div class="row">
+  <% if !@cart.products.any? && !@cart.box %>
+  <div class="row justify-content-center">
     <div class="link">
-      <%= link_to "Explore our offers", products_path, class: "btn-rounded-primary" %>
+      <%= link_to "Explore Our Hood", new_preference_path, class: "btn-rounded-primary" %>
     </div>
-    <h1 class="text-center text-primary mt-3">No items in your cart yet</h1>
   </div>
+    <h1 class="text-center text-primary mt-3">No items in your cart yet</h1>
   <% else %>
   <div class="row justify-content-center">
     <div class="link">
       <%= form_tag orders_path do %>
-        <%= submit_tag 'Proceed to Checkout', class: 'btn-rounded-primary' %>
+      <%= submit_tag 'Proceed to Checkout', class: 'btn-rounded-primary border-0' %>
       <% end %>
     </div>
   </div>
   <div class="row">
+    <% if @cart.products.any? %>
     <div class="col-12 col-lg-6 border-right border-primary products-container pb-3 pb-lg-0 pr-0 pr-lg-5">
       <h2 class="text-center text-primary" style="font-family: Roboto;"> Your Products</h2>
       <% @products.each do |product| %>
@@ -46,22 +47,48 @@
       </div>
       <% end %>
     </div>
-
-    <div class="col-12 col-lg-6 pt-3 pt-lg-0 pl-0 pl-lg-5">
-      <h2 class="text-center text-primary"> Your Box</h2>
-      <div class="cart card text-white bg-primary w-100">
-        <div class="cart-header card-header"><%= @box&.name %></div>
+    <div class="col-12 col-lg-6 bottom">
+      <h2 class="text-center text-primary" style="font-family: Roboto;"> Your Box</h2>
+      <div class="card border border-primary mt-2">
+        <div class="bg-transparent d-flex justify-content-between px-3 py-2">
+          <h4 class="text-primary font-weight-bold text-left mb-0"><%= @box&.name %></h4>
+          <h3 class="text-primary card-title font-weight-bold text-right mb-0"><%= @box&.price %>₺</h3>
+        </div>
         <div class="card-body">
-          <div class="row">
-            <div class="col cart-bg"></div>
-            <div class="col">
-              <h5 class="cart-title card-title mb-5 mt-5"><%= @box&.description %></h5>
-              <p class="cart-text card-text mt-5"> <%= @box&.price %>₺</p>
-
-            </div>
-          </div>
+          <%= @box&.description %>
+          <p class="card-text">
+            With this plan you will receive a surprise box of tailored items, among other surprises.</p>
+            <%= simple_form_for @cart, url: cart_path do |f| %>
+              <%= f.hidden_field :box_id, value: nil %>
+              <div class="boxes btn btn-primary text-white btn-sm">
+                <%= f.submit "Remove from cart", class: "bg-transparent text-white border-0" %>
+              </div>
+            <% end %>
+        </div>
+      </div>
+    </div>
+    <% else %>
+    <div class="col-12 col-lg-6 bottom mx-auto">
+      <h2 class="text-center text-primary" style="font-family: Roboto;"> Your Box</h2>
+      <div class="card border border-primary mt-2">
+        <div class="bg-transparent d-flex justify-content-between px-3 py-2">
+          <h4 class="text-primary font-weight-bold text-left mb-0"><%= @box&.name %></h4>
+          <h3 class="text-primary card-title font-weight-bold text-right mb-0"><%= @box&.price %>₺</h3>
+        </div>
+        <div class="card-body">
+          <%= @box&.description %>
+          <p class="card-text">
+            With this plan you will receive a surprise box of tailored items, among other surprises.</p>
         </div>
       </div>
     </div>
     <% end %>
+    <% end %>
   </div>
+</div>
+
+
+
+
+
+
