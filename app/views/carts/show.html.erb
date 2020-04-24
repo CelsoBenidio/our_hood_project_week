@@ -10,7 +10,7 @@
   <div class="row justify-content-center">
     <div class="link">
       <%= form_tag orders_path do %>
-      <%= submit_tag 'Proceed to Checkout', class: 'btn-rounded-primary border-0' %>
+        <%= submit_tag 'Proceed to Checkout', class: 'btn-rounded-primary border-0' %>
       <% end %>
     </div>
   </div>
@@ -30,8 +30,8 @@
             <div class="py-3">
               <p class="desc"><%= product.description %></p>
               <div class="prdct-buttons">
-                <% if current_user.cart.products.include?(product) %>
-                <%= simple_form_for CartProduct.where(product: product, cart: current_user.cart).first, :method => :delete do |f| %>
+                <% if current_or_guest_user.cart.products.include?(product) %>
+                <%= simple_form_for CartProduct.where(product: product, cart: current_or_guest_user.cart).first, :method => :delete do |f| %>
                 <%= f.submit "Remove from cart", class: "card_button" %>
                 <% end %>
                 <% else %>
