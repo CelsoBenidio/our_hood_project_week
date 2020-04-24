@@ -28,7 +28,10 @@ first_user.orders.push(first_order)
 
 # 5 - Create Product
 
-first_order.products.push(Product.create(name: "candle", price: 10, description: "the best candle in the world"))
+first_order.products.push(Product.create(name: "Candle", price: 10, description: "The best candle in the world.", category: 1))
+second_order.products.push(Product.create(name: "Table", price: 200, description: "The best table in the world.", category: 4))
+third_order.products.push(Product.create(name: "Turntable", price: 2350, description: "The best vinyl in the world.", category: 3))
+fourth_order.products.push(Product.create(name: "Vintage Jacket", price: 120, description: "The best vintage jacket in the world.", category: 2))
 
 
 
