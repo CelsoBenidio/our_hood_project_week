@@ -9,10 +9,11 @@ class CartsController < ApplicationController
   def update
     @cart = current_user.cart
     @cart.update(cart_params)
-    redirect_to root_path
+
+    redirect_to products_path
   end
 
-private
+  private
 
   def cart_params
     params.require(:cart).permit(:box_id)

@@ -19,15 +19,16 @@
         </div>
         <div class="card-body">
           <% if current_or_guest_user.preference %>
-            <p class="card-text">
-              With this plan you will receive a surprise box of tailored <%= current_or_guest_user.preference.stringify_categories %> items, among others
-            </p>
+          <p class="card-text">
+            With this plan you will receive a surprise box of tailored <%= current_or_guest_user.preference.stringify_categories %> items, among others
+          </p>
           <% end %>
-          <%= simple_form_for @cart, url: cart_path(@cart) do |f|%>
-          <%= f.hidden_field :box_id, value: box.id %>
-          <div class="boxes btn btn-primary text-white btn-sm">
-            <%= f.button :submit %>
-          </div>
+          <%# <%= simple_form_for @cart, url: preferences_path do |f| %>
+          <%= simple_form_for @cart, url: cart_path do |f| %>
+            <%= f.hidden_field :box_id, value: box.id %>
+            <div class="boxes btn btn-primary text-white btn-sm">
+              <%= f.button :submit %>
+            </div>
           <% end %>
         </div>
       </div>
