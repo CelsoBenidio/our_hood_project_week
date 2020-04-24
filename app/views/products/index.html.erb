@@ -15,12 +15,12 @@
             <div class=" col-6">
               <p id="category_name" class="pt-3"><%= product.category %></p>
               <h1 id="product_name"><%= product.name %></h1>
-              <h2 id="price"><%= product.price %>₺</h2>
+              <h2 id="price"><%= humanized_money_with_symbol(product.price) %></h2>
               <div class="py-3">
                 <p class="desc"><%= product.description %></p>
                 <div class="prdct-buttons">
-                  <% if current_user.cart.products.include?(product) %>
-                  <%= simple_form_for CartProduct.where(product: product, cart: current_user.cart).first, :method => :delete do |f| %>
+                  <% if current_or_guest_user.cart.products.include?(product) %>
+                  <%= simple_form_for CartProduct.where(product: product, cart: current_or_guest_user.cart).first, :method => :delete do |f| %>
                   <%= f.submit "Remove from cart", class: "card_button" %>
                   <% end %>
                   <% else %>

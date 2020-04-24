@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index]
   def index
     @products = Product.all
     @cart_product = CartProduct.new
@@ -16,7 +17,6 @@ class ProductsController < ApplicationController
     else
       render :new
     end
-
   end
 
 
