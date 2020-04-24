@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount StripeEvent::Engine, at: '/stripe-webhooks'
 
   get 'how-it-works', to: 'pages#how_it_works'
   get 'about-us', to: 'pages#about_us'
@@ -21,5 +22,8 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :new, :create]
   resources :cart_products, only: [:create, :destroy]
   resources :carts, only: [:show, :update]
-  resources :orders, only: [:show]
+
+  resources :orders, only: [:show, :create] do
+    resources :payments, only: :new
+  end
 end

@@ -1,10 +1,10 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
-  
+
   before_action :current_or_guest_user
 
   helper_method :current_or_guest_user
-  
+
   def default_url_options
     { host: ENV["DOMAIN"] || "localhost:3000" }
   end
@@ -63,3 +63,13 @@ class ApplicationController < ActionController::Base
       u
     end
   end
+
+# 1. User add product to cart
+# 2. Click the proceed to checkout button
+    # a. Order is created on DB. By default the order is pending
+    # b. Create a new Stripe payment session and link it to the order
+# 3. In the payments/new page we click the button to redirect to stripe
+# 4. Process the payment on Stripe website (not ours!)
+  # a. Once the payment is processed, stripe sends a webook request to us
+  # b. When we receive the webhook request we update the order to "paid" and we empty the cart
+# 5. Stripe redirects us back to ourhood

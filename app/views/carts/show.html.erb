@@ -4,12 +4,14 @@
     <div class="link">
       <%= link_to "Explore our offers", products_path, class: "btn-rounded-primary" %>
     </div>
-    <h1 class= "text-center text-primary mt-3">No items in your cart yet</h1>
+    <h1 class="text-center text-primary mt-3">No items in your cart yet</h1>
   </div>
   <% else %>
   <div class="row justify-content-center">
     <div class="link">
-      <%= link_to "Proceed to Checkout", new_product_path, class: "btn-rounded-primary" %>
+      <%= form_tag orders_path do %>
+        <%= submit_tag 'Proceed to Checkout', class: 'btn-rounded-primary' %>
+      <% end %>
     </div>
   </div>
   <div class="row">
@@ -42,28 +44,6 @@
           </div>
         </div>
       </div>
-      <!-- <div class="cart-product bg-white shadow d-flex align-items-center mb-3 w-100">
-        <%= cl_image_tag product.photo.key %>
-        <div class="cart-product-infos w-100 py-2">
-          <h2><%= product.name %></h2>
-          <p><%= product.description %></p>
-          <p><%= product.price %>₺</p>
-          <p><%= product.category %></p>
-
-          <div class="d-flex justify-content-end">
-            <% if current_user.cart.products.include?(product) %>
-            <%= simple_form_for CartProduct.where(product: product, cart: current_user.cart).first, :method => :delete do |f| %>
-            <%= f.submit "Remove from cart", class: "btn btn-primary text-white" %>
-            <% end %>
-            <% else %>
-            <%= simple_form_for @cart_product do |f| %>
-            <%= f.hidden_field :product_id, value: product.id  %>
-            <%= f.submit "Move to the wishlist", class: "btn btn-primary text-white" %>
-            <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div> -->
       <% end %>
     </div>
 
@@ -75,8 +55,8 @@
           <div class="row">
             <div class="col cart-bg"></div>
             <div class="col">
-          <h5 class="cart-title card-title mb-5 mt-5"><%= @box&.description %></h5>
-          <p class="cart-text card-text mt-5"> <%= @box&.price %>₺</p>
+              <h5 class="cart-title card-title mb-5 mt-5"><%= @box&.description %></h5>
+              <p class="cart-text card-text mt-5"> <%= @box&.price %>₺</p>
 
             </div>
           </div>
@@ -85,5 +65,3 @@
     </div>
     <% end %>
   </div>
-
-
