@@ -1,13 +1,14 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   def index
-    @products = Product.all
+    @products = policy_scope(Product)
     @cart_product = CartProduct.new
   end
 
 
   def new
      @product = Product.new
+     authorize @product
   end
 
   def create
