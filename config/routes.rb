@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   get '/cart', to: 'carts#show'
   patch '/cart', to: 'carts#update'
 
+  resources :shops, only: [:new, :create]
+
   resources :products, only: [:index, :new, :create]
   resources :cart_products, only: [:create, :destroy]
 

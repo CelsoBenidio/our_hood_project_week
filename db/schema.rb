@@ -108,6 +108,16 @@ ActiveRecord::Schema.define(version: 2020_04_27_122712) do
     t.integer "price_cents", default: 0, null: false
   end
 
+  create_table "shops", force: :cascade do |t|
+    t.string "store_name"
+    t.string "owner_name"
+    t.string "description"
+    t.string "email"
+    t.string "phone_number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
