@@ -7,8 +7,6 @@
   border-radius: 50px;
 }
 
-
-
 .btn-rounded-primary:hover{
   background-color: #0DBF6C;
   color: white;
@@ -42,4 +40,15 @@
   border-radius: 50px;
 }
 
+.btn-google {
+  color: red !important;
+  background-color: white;
+  border-color: red;
+}
+
+.btn-google:hover {
+  color: white !important;
+  background-color: red;
+  border-color: red;
+}
 

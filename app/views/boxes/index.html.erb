@@ -1,18 +1,19 @@
-<div class="container mt-1">
+<div class="px-5 my-5">
   <div class="row">
-    <div class="col-12 col-lg-6">
-      <h3 class="font-weight-bold text-left px-1 py-2">What do you receive?</h3>
-      <p>You receive a new gift box from the neighborhood of your choice loaded with items that fit your tastes and preferences. And you will be supporting the local economy of your own neighborhood or one you choose to explore. Each month will be a happy surprise for you.</p>
-      <div class="row d-flex align-items-center">
+    <div class="col-12 col-lg-5 pr-5">
+      <h3 class="font-weight-bold text-left">What will you receive?</h3>
+      <p class='mb-4'>You receive a new gift box every month with products that will fill your needs and surprise your palate. All will be supporting the local shops of Istanbul.</p>
+      <!-- <div class="row d-flex align-items-center">
         <img src="https://res.cloudinary.com/drjk0oilg/image/upload/v1587543071/nrvvrumahrbxoktbiji6.png" alt="gift box" class="boxes-img float-left border border-primary m-2">
         <img src="https://res.cloudinary.com/drjk0oilg/image/upload/v1587543874/wgpxmwji9fzojblcn6dw.png" alt="birthday box" class="boxes-img float-center border border-primary m-2">
         <img src="http://res.cloudinary.com/drjk0oilg/image/upload/v1587543968/rtzvjujuemc6hphbtw4c.png" alt="mello" class="boxes-img float-right border border-primary m-2">
         <img src="https://res.cloudinary.com/drjk0oilg/image/upload/v1587555984/lablmwxrioxasmitug1j.png" alt="presents" class="presents-img float-right border border-primary m-2">
-      </div>
+      </div> -->
     </div>
-    <div class="col-12 col-lg-6 bottom">
+    <div class="col-12 col-lg-7 bottom">
+      <h4 class="mb-3 text-center"><b>You can choose among 3 fantastic mothly plans!</b></h4>
       <% @boxes.each do |box|  %>
-      <div class="card border border-primary mt-2">
+      <div class="card shadow-sm my-3">
         <div class="bg-transparent d-flex justify-content-between px-3 py-2">
           <h4 class="text-primary font-weight-bold text-left mb-0"><%= box.name %></h4>
           <h3 class="text-primary card-title font-weight-bold text-right mb-0"><%= "#{box.price}" %>₺</h3>
@@ -24,12 +25,12 @@
           </p>
           <% end %>
           <%# <%= simple_form_for @cart, url: preferences_path do |f| %>
-          <%= simple_form_for @cart, url: cart_path do |f| %>
+          <!-- <%= simple_form_for @cart, url: cart_path do |f| %>
             <%= f.hidden_field :box_id, value: box.id %>
             <div class="boxes btn btn-primary text-white btn-sm">
               <%= f.submit "Add to cart", class: "bg-transparent text-white border-0" %>
             </div>
-          <% end %>
+          <% end %> -->
         </div>
       </div>
       <% end %>
