@@ -1,43 +1,24 @@
-<div class="container">
-  <div class="row py-4">
-    <div class="col">
-      <h1>Checkout summary</h1>
-      <p>Purchase of <strong>Total</strong> <%= humanized_money_with_symbol @order.amount %></strong></p>
-      <button id="pay" class="btn btn-primary">Pay</button>
-      <script src="https://js.stripe.com/v3/"></script>
-      <script>
-        // grab the button with id = pay
-        const paymentButton = document.getElementById('pay');
 
-        // when the button is clicked we redirect the user for payment
-        paymentButton.addEventListener('click', () => {
-          const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
-          stripe.redirectToCheckout({
-            sessionId: '<%= @order.checkout_session_id %>'
-          });
-        });
-      </script>
-    </div>
-  </div>
-</div>
-
-
-<%= form_tag purchases_path, id: "payment-form" do |form| %>
+<div class="container" id="payment-container" data-order="<%= @order.id %>" data-user="<%= current_user.email %>">
+  <%= form_tag new_order_payment_path, id: "payment-form" do |form| %>
   <div class="group">
-    <label>
-      <span>Name</span>
-      <input id="name" class="field" placeholder="Jane Doe" />
+     <label>
+      <span>First Name</span>
+      <input id="name" class="field" placeholder="Jane" />
     </label>
-    <label>
+    <!--<label>
+      <span>Last Name</span>
+      <input id="name" class="field" placeholder="Doe" />
+    </label> -->
+    <label class="w-100">
       <span>Card</span>
-      <div id="card-element" class="field"></div>
+      <div id="card-element" class="field w-100 "></div>
     </label>
   </div>
   <button class='subscription-button'>Place your order</button>
   <div class="outcome">
     <div id="card-errors" role="alert"></div>
-    <div class="success">
-      Success! Your Stripe token is <span class="token"></span>
-    </div>
   </div>
-<% end %>
+  <% end %>
+</div>
+
