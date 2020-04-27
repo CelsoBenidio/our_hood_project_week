@@ -22,4 +22,8 @@
     <%= f.button :submit, "Sign up", class: "form-button btn btn-primary text-white my-2 btn-block" %>
   </div>
   <% end %>
+
+  <div class="d-flex justify-content-between mt-3">
+    Already have an account? <%= link_to "Sign in", new_session_path(resource_name), class: "" %>
+  </div>
 </div>

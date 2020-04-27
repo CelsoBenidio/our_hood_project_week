@@ -59,7 +59,6 @@
           text-align: center;
           font-size: 0.8rem;
           font-weight: 600;
-          text-transform: uppercase;
           letter-spacing: 1px;
           color: black;
           margin: auto;
@@ -70,12 +69,11 @@
       input.check_boxes:checked + .radio-tile, input.radio_buttons:checked + .radio-tile {
         // background-color: #10E380;
         border: 0.5px solid #0DBF6C;
-        color: #10E380;
         transform: scale(1.01, 1.01);
 
         label {
-          color: white;
-          background-color: none;
+        color: #10E380;
+        background-color: none;
         }
       }
     }
