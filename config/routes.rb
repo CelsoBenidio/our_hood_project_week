@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get 'how-it-works', to: 'pages#how_it_works'
   get 'about-us', to: 'pages#about_us'
+  get 'stores', to: 'pages#stores'
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks",
                                    sessions: "sessions",
