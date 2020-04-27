@@ -7,6 +7,8 @@ class CartProductsController < ApplicationController
     CartProduct.create(product: @product, cart: @cart)
 
     redirect_to products_path
+
+    authorize @cart_product
   end
 
   def destroy
