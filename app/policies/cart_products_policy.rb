@@ -1,11 +1,10 @@
-class CartPolicy < ApplicationPolicy
-
-  def show?
+class CartProductsPolicy < ApplicationPolicy
+  def create?
     record.user == user || user.admin
   end
 
-  def update?
-    record.user == user || user.admin
+  def destroy?
+    user.admin
   end
 
   class Scope < Scope

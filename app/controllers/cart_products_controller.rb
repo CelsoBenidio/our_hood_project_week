@@ -16,6 +16,8 @@ class CartProductsController < ApplicationController
     @cart_product = CartProduct.find(params[:id])
     @cart_product.destroy
     redirect_back(fallback_location: products_path)
+
+    authorize @cart_product
   end
 
   def cart_product_params

@@ -7,6 +7,9 @@ class ProductsController < ApplicationController
 
 
   def new
+    # only admin can create a product
+    # if you are admin, then you can create a product
+    # otherwise, you cannot
      @product = Product.new
      authorize @product
   end
