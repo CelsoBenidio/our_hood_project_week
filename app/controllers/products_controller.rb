@@ -15,6 +15,9 @@ class ProductsController < ApplicationController
   end
 
   def create
+    # only admin can create a product
+    # if you are admin, then you can create a product
+    # otherwise, you cannot
     @product = Product.new(product_params)
     if @product.save
       redirect_to products_path, notice: 'Product is created.'

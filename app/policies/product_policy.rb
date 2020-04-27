@@ -1,7 +1,11 @@
 class ProductPolicy < ApplicationPolicy
 
+  def create?
+    user.admin
+  end
+
   def new?
-    true
+    user.admin
   end
 
   class Scope < Scope
