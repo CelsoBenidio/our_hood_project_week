@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  skip_after_action :verify_authorized, only: [:show]
   def create
     order = Order.create!(
       user_id: current_user.id,
@@ -18,9 +19,15 @@ class OrdersController < ApplicationController
     order.update(checkout_session_id: session.id)
 
     redirect_to new_order_payment_path(order)
+    authorize order
   end
 
   def show
-    @order = Order.find(params[:id])
+    begin
+      @order = policy_scope(Order).find(params[:id])
+      authorize @order
+    rescue ActiveRecord::RecordNotFound
+      render :file => "#{Rails.root}/public/404.html",  layout: false, status: :not_found
+    end
   end
 end

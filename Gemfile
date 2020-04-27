@@ -20,6 +20,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'cloudinary', '~> 1.12.0'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
+gem 'pundit'
 
 gem 'money-rails'
 gem 'stripe'

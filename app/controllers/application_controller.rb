@@ -5,6 +5,19 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_or_guest_user
 
+    include Pundit
+
+    # Pundit: white-list approach.
+    after_action :verify_authorized, except: :index, unless: :skip_pundit?
+    after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
+
+    # Uncomment when you *really understand* Pundit!
+    # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+    # def user_not_authorized
+    #   flash[:alert] = "You are not authorized to perform this action."
+    #   redirect_to(root_path)
+    # end
+
   def default_url_options
     { host: ENV["DOMAIN"] || "localhost:3000" }
   end
@@ -56,12 +69,16 @@ class ApplicationController < ActionController::Base
 
   end
 
-  def create_guest_user
-    u = User.new(:name => "guest", :email => "guest_#{Time.now.to_i}#{rand(100)}@example.com")
-    u.save!(:validate => false)
-    session[:guest_user_id] = u.id
-    u
-  end
+    def create_guest_user
+      u = User.new(:name => "guest", :email => "guest_#{Time.now.to_i}#{rand(100)}@example.com")
+      u.save!(:validate => false)
+      session[:guest_user_id] = u.id
+      u
+    end
+
+    def skip_pundit?
+      devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+    end
 end
 
 # 1. User add product to cart
