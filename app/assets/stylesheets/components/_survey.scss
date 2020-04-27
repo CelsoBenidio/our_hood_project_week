@@ -68,9 +68,9 @@
 
       //active tile styles
       input.check_boxes:checked + .radio-tile, input.radio_buttons:checked + .radio-tile {
-        background-color: #10E380;
+        // background-color: #10E380;
         border: 0.5px solid #0DBF6C;
-        color: white;
+        color: #10E380;
         transform: scale(1.01, 1.01);
 
         label {
@@ -93,5 +93,5 @@
 }
 
 .w-25 {
-  width: 510px !important;
+  width: 300px !important;
 }
