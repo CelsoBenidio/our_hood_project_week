@@ -10,7 +10,7 @@
 <div class="container preferences-new-page">
     <%= simple_form_for @preference, url: preferences_path do |f| %>
       <% SURVEY[:QUESTIONS].each_with_index do |question, index| %>
-        <section id="<%= question[:id] %>-section" class="scroll-section <%= question[:type] == 'text' ? 'section--text' : 'section--radio'%> vh-100 flex-column justify-content-center align-items-center <%= index == 0 ? 'd-flex' : 'd-none' %>">
+        <section id="<%= question[:id] %>-section" data-index="<%= index %>" class="scroll-section <%= question[:type] == 'text' ? 'section--text' : 'section--radio'%> vh-100 flex-column justify-content-center align-items-center <%= index == 0 ? 'd-flex active' : 'd-none' %>">
           <p class="font-weight-lighter"> <%= question[:type_order]  %></p>
           <h3 class="text-center"> <%= question[:content] %> </h3>
           <p class="font-weight-light"> <%= question[:type_select] %> </p>
@@ -22,7 +22,7 @@
             <%= f.input question[:id].to_sym, as: :check_boxes, collection: question[:options], label: "" %>
           <% end %>
           <% if index != SURVEY[:QUESTIONS].length - 1%>
-            <span class="btn-lg-rounded-primary" id="next-button">Next</span>
+            <span class="btn-lg-rounded-primary next-button">Next</span>
           <% else %>
             <%= f.button :submit, "See your plan!", class: "btn-lg-rounded-primary" %>
           <% end %>
