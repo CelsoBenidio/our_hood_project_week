@@ -1,3 +1,20 @@
+.box-card.selected {
+  border: 1px solid $primary;
+}
+
+.box-card.selected h4 {
+  color: $primary;
+}
+
+
+.box-card h3 {
+  color: black;
+}
+
+
+.box-card {
+  cursor: pointer;
+}
 .boxes-img {
   height: 175px;
   width: 200px;
