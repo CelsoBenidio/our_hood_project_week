@@ -3,3 +3,41 @@ body {
  background: white;
 }
 
+.content {
+  padding-bottom: 100px;
+}
+
+.bck {
+  background: #F4F4F4;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.faq {
+  #faq-head {
+    text-align: center;
+    padding-top: 30px;
+  }
+}
+
+#faq-desc {
+  text-align: center;
+  padding-top: 30px;
+}
+
+.question {
+  text-decoration: none;
+  background: none;
+  border: none;
+}
+
+.q-header:hover {
+  background: white;
+  cursor: pointer;
+}
+
+.q-header {
+  border-top: 1px solid #ddd;
+  padding: 20px;
+}
+

@@ -1,7 +1,9 @@
 class CartProductsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:create, :destroy]
+
   def create
     @product = Product.find(cart_product_params[:product_id])
-    @cart = current_user.cart
+    @cart = current_or_guest_user.cart
     CartProduct.create(product: @product, cart: @cart)
 
     redirect_to products_path

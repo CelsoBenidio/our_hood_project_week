@@ -3,13 +3,12 @@ require("@rails/activestorage").start()
 require("channels")
 require("jquery")
 
+import "bootstrap";
 import { replaceLabelWithDiv, replaceFieldsetWithDiv, handleCheckboxState } from './plugins/customRadioButtons'
-import { initMobileMenu } from './plugins/navbartoggle'
+
 
 replaceLabelWithDiv()
 replaceFieldsetWithDiv()
 handleCheckboxState()
-initMobileMenu()
 
-import "bootstrap";
 
