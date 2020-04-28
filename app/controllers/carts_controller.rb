@@ -4,6 +4,8 @@ class CartsController < ApplicationController
     @cart = current_or_guest_user.cart
     @box = @cart.box
     @products = @cart.products
+
+    authorize @cart
   end
 
   def update
@@ -14,6 +16,8 @@ class CartsController < ApplicationController
     else
       redirect_to products_path
     end
+
+    authorize @cart
   end
 
   private

@@ -33,8 +33,9 @@
 
 .small-cover-banner {
   background-size: cover;
-  background-position: bottom;
+  background-position: center;
   display: flex;
+  justify-content: left;
   text-align: left;
   color: white;
   padding-top: 70px;
@@ -123,7 +124,43 @@
 }
 
 .prdct-bnnr {
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 0;
+  padding-bottom: 0;
   background-position: center;
+  display: flex;
+  justify-content: center;
+  text-align: left;
+}
+
+.prdct-bnnr h1 {
+  margin: 1.5rem;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.prdct-bnnr h2 {
+  margin: 1.5rem;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 24px;
+
+}
+
+.checkout-grey-banner {
+  display: flex;
+  align-items: center;
+  text-align: right;
+  background-color: #E8E3D9;
+  justify-content: right;
+}
+
+.checkout-yellow-banner {
+  display: flex;
+  align-items: center;
+  text-align: right;
+  background-color: #fadb7e;
+  justify-content: right;
 }

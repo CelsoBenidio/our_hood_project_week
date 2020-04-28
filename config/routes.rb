@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get 'how-it-works', to: 'pages#how_it_works'
   get 'about-us', to: 'pages#about_us'
+  get 'stores', to: 'pages#stores'
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks",
                                    sessions: "sessions",
@@ -17,6 +18,8 @@ Rails.application.routes.draw do
 
   get '/cart', to: 'carts#show'
   patch '/cart', to: 'carts#update'
+
+  resources :shops, only: [:new, :create]
 
   resources :products, only: [:index, :new, :create]
   resources :cart_products, only: [:create, :destroy]
