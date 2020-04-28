@@ -34,11 +34,11 @@
   <body class="position-relative" style="min-height: 100vh">
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
+  <div class="content" data-subtotal="<%= humanized_money_with_symbol(current_or_guest_user.cart.get_total_price/100) %>">
   <div class='content <%= SHOULD_SHOW_NAVBAR["#{controller_name}_#{action_name}".to_sym] ? "" : "with-padding" %>'>
     <%= yield %>
   </div>
       <%= render "shared/footer" %>
       <%= javascript_pack_tag 'application' %>
-
   </body>
 </html>

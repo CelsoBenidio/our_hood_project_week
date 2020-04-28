@@ -16,11 +16,23 @@ const initCart = () => {
         if (input.checked) {
         box.classList.add('selected')
         form.querySelector('input[type="submit"]').disabled = false
+        showSubTotal(parseInt(box.dataset.price))
         } else {
+          form.querySelector('input[type="submit"]').disabled = true
           box.classList.remove('selected')
         }
         })
     })
   }
 }
-export {initCart}
+const showSubTotal = (price = null) => {
+  const subtotal = document.querySelector('#subtotal')
+  const amountWithCurrency = document.querySelector('div[data-subtotal]').dataset.subtotal
+  const currency = amountWithCurrency.substring(0,1)
+  const amount = parseInt(1)
+  if (subtotal) {
+    subtotal.innerText = price ? `${price + amount} ${currency}` : amountWithCurrency
+  }
+}
+export {initCart, showSubTotal}
+
