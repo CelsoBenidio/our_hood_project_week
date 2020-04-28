@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <%= favicon_link_tag "favicon-32x32.png" %>
+<head>
+  <meta charset="UTF-8">
+  <%= favicon_link_tag "favicon-32x32.png" %>
   <title><%= meta_title %></title>
   <meta name="description" content="<%= meta_description %>">
 
@@ -25,20 +25,21 @@
   <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
   <meta name="twitter:image:src" content="<%= meta_image %>">
 
-    <%= csrf_meta_tags %>
-    <%= action_cable_meta_tag %>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-      <%= tag :meta, name: "stripe-public-key", content: ENV["STRIPE_PUBLISHABLE_KEY"] %>
-  </head>
-  <body class="position-relative" style="min-height: 100vh">
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
-  <div class="content" data-subtotal="<%= humanized_money_with_symbol(current_or_guest_user.cart.get_total_price/100) %>">
-  <div class='content <%= SHOULD_SHOW_NAVBAR["#{controller_name}_#{action_name}".to_sym] ? "" : "with-padding" %>'>
-    <%= yield %>
+  <%= csrf_meta_tags %>
+  <%= action_cable_meta_tag %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= tag :meta, name: "stripe-public-key", content: ENV["STRIPE_PUBLISHABLE_KEY"] %>
+</head>
+<body class="position-relative" style="min-height: 100vh">
+  <%= render 'shared/navbar' %>
+  <%= render 'shared/flashes' %>
+    <div class='content <%= SHOULD_SHOW_NAVBAR["#{controller_name}_#{action_name}".to_sym] ? "" : "with-padding" %>'>
+    <div class="content" data-subtotal="<%= humanized_money_with_symbol(current_or_guest_user.cart.get_total_price/100) %>">
+      <%= yield %>
+    </div>
   </div>
-      <%= render "shared/footer" %>
-      <%= javascript_pack_tag 'application' %>
+    <%= render "shared/footer" %>
+    <%= javascript_pack_tag 'application' %>
   </body>
 </html>
