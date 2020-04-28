@@ -1,10 +1,6 @@
-class CartPolicy < ApplicationPolicy
+class ShopPolicy < ApplicationPolicy
 
-  def show?
-    true
-  end
-
-  def update?
+  def new?
     true
   end
 

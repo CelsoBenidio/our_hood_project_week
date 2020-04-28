@@ -11,6 +11,9 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="<%= request.original_url %>" />
   <meta property="og:image" content="<%= meta_image %>" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Gift boxes and products from Istanbul" />
   <meta property="og:description" content="<%= meta_description %>" />
   <meta property="og:site_name" content="<%= meta_title %>" />
 
@@ -26,6 +29,7 @@
     <%= action_cable_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= tag :meta, name: "stripe-public-key", content: ENV["STRIPE_PUBLISHABLE_KEY"] %>
   </head>
   <body class="position-relative" style="min-height: 100vh">
     <%= render 'shared/navbar' %>

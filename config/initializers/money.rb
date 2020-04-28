@@ -2,7 +2,23 @@
 Money.locale_backend = :currency
 Money.rounding_mode = BigDecimal::ROUND_HALF_EVEN
 MoneyRails.configure do |config|
+
+  Money::Currency.register({
+      "priority": 1,
+      "iso_code": "TRY",
+      "name": "Turkish Lira",
+      "symbol": "₺",
+      "subunit": "Kurus",
+      "subunit_to_unit": 100,
+      "symbol_first": false,
+      "html_entity": "₺",
+      "decimal_mark": ".",
+      "thousands_separator": ",",
+      "iso_numeric": "4217",
+      "smallest_denomination": 1
+    })
   config.default_currency = :try
+
   # To set the default currency
   #
   # config.default_currency = :usd

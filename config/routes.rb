@@ -27,6 +27,16 @@ Rails.application.routes.draw do
   resources :orders, only: [:show, :create] do
     resources :payments, only: :new
   end
+
+  # 1. create API namespaces -> (:api and :v1)
+  # 2. Create an API controller -> StripeController
+  # 3. The controller should have an action to create a customer -> (create_a_customer)
+
+  namespace :api, defaults: { format: :json } do
+     namespace :v1 do
+       post '/create_customer', to: 'stripe#create_a_customer'
+     end
+   end
 end
 
 
