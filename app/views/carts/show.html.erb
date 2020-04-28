@@ -7,82 +7,81 @@
   </div>
   <h1 class="text-center text-primary mt-3">No items in your cart yet</h1>
   <% else %>
-<!--   <div class="row justify-content-center">
-</div> -->
-<div class="container">
+  <div class="container">
 
-  <% if @cart.box %>
-  <div class="col-12 bottom <%= @cart.products.any? ? '' : 'mx-auto' %>">
-    <h2 class="px-3 mt-5 mb-4 text-primary">Shopping Cart</h2>
-    <div class="card border ml-lg-3">
-      <div class="bg-transparent d-flex justify-content-between px-3 py-2">
-        <h4 class="text-primary font-weight-bold text-left mb-0"><%= @box&.name %></h4>
-        <h3 class="text-primary card-title font-weight-bold text-right mb-0"><%= @box&.price %>₺</h3>
-      </div>
-      <div class="card-body">
-        <%= @box&.description %>
-        <p class="card-text">
-        With this plan you will receive a surprise box of tailored items, among other surprises.</p>
-        <%= simple_form_for @cart, url: cart_path do |f| %>
-        <%= f.hidden_field :box_id, value: nil %>
-        <div class="boxes btn btn-primary text-white btn-sm">
-          <%= f.submit "Remove from cart", class: "bg-transparent text-white border-0 shadow-0 d-flex justify-content-end" %>
+    <% if @cart.box %>
+    <div class="col-12 bottom <%= @cart.products.any? ? '' : 'mx-auto' %>">
+      <h2 class="px-3 mt-5 mb-4 text-primary">Your Shopping Cart</h2>
+      <div class="card border ml-lg-3">
+        <div class="bg-transparent d-flex justify-content-between px-3 py-2">
+          <h4 class="text-primary font-weight-bold text-left mb-0"><%= @box&.name %></h4>
+          <h3 class="text-primary card-title font-weight-bold text-right mb-0"><%= @box&.price %>₺</h3>
+
         </div>
-        <% end %>
-      </div>
-    </div>
-    <% end %>
-
-    <% if @cart.products.any? %>
-    <div class="col-12 my-3 products-container p-0">
-      <% @products.each do |product| %>
-      <div class="card mb-5 ml-lg-3 product-card" style="border-radius: 0; box-shadow: none">
-        <div class="row">
-          <div class="col-6 px-0 product-image" style="background-image: url('<%= product.photo.attached? ? cl_image_path(product.photo.key) : product.default_picture %>')">
+        <div class="card-body">
+          <%= @box&.description %>
+          <p class="card-text">
+          With this plan you will receive a surprise box of tailored items, among other surprises.</p>
+          <%= simple_form_for @cart, url: cart_path, html: {class: 'd-flex justify-content-end'} do |f| %>
+          <%= f.hidden_field :box_id, value: nil %>
+          <div class="boxes btn btn-primary text-white btn-sm shadow-0">
+            <%= f.submit "REMOVE FROM CART", class: "bg-transparent text-white border-0 shadow-0 d-flex justify-content-end" %>
           </div>
-          <div class=" col-6">
-            <p id="category_name" class="pt-3"><%= product.category %></p>
-            <h1 id="product_name"><%= product.name %></h1>
-            <h2 id="price"><%= product.price %>₺</h2>
-            <div class="py-3">
-              <p class="desc"><%= product.description %></p>
-              <div class="prdct-buttons">
-                <% if current_or_guest_user.cart.products.include?(product) %>
-                <%= simple_form_for CartProduct.where(product: product, cart: current_or_guest_user.cart).first, :method => :delete do |f| %>
-                <%= f.submit "Remove from cart", class: "card_button" %>
-                <% end %>
-                <% else %>
-                <%= simple_form_for @cart_product do |f| %>
-                <%= f.hidden_field :product_id, value: product.id  %>
-                <%= f.submit "Add to cart", class: "card_button" %>
-                <% end %>
-                <% end %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+
+      <% if @cart.products.any? %>
+      <div class="col-12 my-3 products-container p-0">
+        <% @products.each do |product| %>
+        <div class="card mb-5 ml-lg-3 product-card" style="border-radius: 0; box-shadow: none">
+          <div class="row">
+            <div class="col-6 px-0 product-image" style="background-image: url('<%= product.photo.attached? ? cl_image_path(product.photo.key) : product.default_picture %>')">
+            </div>
+            <div class=" col-6">
+              <p id="category_name" class="pt-3"><%= product.category %></p>
+              <h1 id="product_name"><%= product.name %></h1>
+              <h2 id="price"><%= product.price %>₺</h2>
+              <div class="py-3">
+                <p class="desc"><%= product.description %></p>
+                <div class="prdct-buttons">
+                  <% if current_or_guest_user.cart.products.include?(product) %>
+                  <%= simple_form_for CartProduct.where(product: product, cart: current_or_guest_user.cart).first, :method => :delete, html: {class: 'd-flex justify-content-end'} do |f| %>
+                  <%= f.submit "Remove from cart", class: "boxes btn btn-primary text-white btn-sm shadow-0" %>
+                  <% end %>
+                  <% else %>
+                  <%= simple_form_for @cart_product, html: {class: 'd-flex justify-content-end'} do |f| %>
+                  <%= f.hidden_field :product_id, value: product.id  %>
+                  <%= f.submit "Add to cart", class: "boxes btn btn-primary text-white btn-sm shadow-0" %>
+                  <% end %>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>
         </div>
+        <% end %>
       </div>
       <% end %>
-    </div>
-    <% end %>
 
-    <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
 
 </div>
 <div class="checkout-yellow-banner p-3 ">
-  <div class="row w-100 d-flex justify-content-end">
+  <div class="row w-100 d-flex justify-content-end card-summary">
     <div class="col-12 col-lg-5 mx-auto mx-lg-0 mr-lg-3 mb-2 mb-lg-0">
-      <h4 class="my-0 text-center text-lg-right">Sub-total</h4>
+      <h4 class="my-0 text-center text-lg-right">Sub-total: <span id="subtotal"></span></h4>
       <p class="my-0 text-center text-lg-right">10% discount on your first order.</p>
     </div>
-<!--       <div class="link">
--->      <%= form_tag orders_path do %>
-<%= submit_tag 'Continue', class: 'btn-lg-rounded-primary col-12 border-0 mr-2' %>
-<% end %>
-<!--  </div> -->
-</div>
+    <div class='col-12 col-lg-2'>
+    <%= form_tag orders_path do %>
+    <%= submit_tag 'go to pay', class: 'btn-lg-rounded-primary w-100 border-0 mr-2 px-0' %>
+    <% end %>
+    </div>
+  </div>
 </div>
 
 

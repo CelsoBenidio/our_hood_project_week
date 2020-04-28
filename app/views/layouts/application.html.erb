@@ -30,7 +30,7 @@
   <body class="position-relative" style="min-height: 100vh">
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-  <div class="content">
+  <div class="content" data-subtotal="<%= humanized_money_with_symbol(current_or_guest_user.cart.get_total_price/100) %>">
     <%= yield %>
   </div>
       <%= render "shared/footer" %>
