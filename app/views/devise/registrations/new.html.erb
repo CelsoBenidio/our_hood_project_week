@@ -1,5 +1,19 @@
 <div class="container shadow-sm p-4 my-5" style='max-width: 400px'>
   <!-- <h2>Sign up</h2> -->
+  <%- resource_class.omniauth_providers.each do |provider| %>
+    <% if provider.to_s == 'google_oauth2' %>
+      <%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-google btn-block" do  %>
+        <i class="fab fa-google-plus-g"></i> Login with Google
+      <% end %>
+    <% else %>
+      <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-facebook btn-block" do %>
+      <i class="fab fa-facebook"></i> Sign in with Facebook
+      <% end %>
+    <% end %>
+  <% end %>
+
+
+  <p class='text-center mt-4'>- OR -</p>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
