@@ -40,8 +40,7 @@ class Api::V1::StripeController < Api::V1::BaseController
       order.user.cart.update box_id: nil
 
       render json: order
-    rescue
-      byebug
+
     end
   end
 end
