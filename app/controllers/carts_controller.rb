@@ -10,14 +10,15 @@ class CartsController < ApplicationController
 
   def update
     @cart = current_or_guest_user.cart
+
+    authorize @cart
+
     @cart.update(cart_params)
     if cart_params[:box_id] == ""
     redirect_to boxes_path
     else
-      redirect_to products_path
+    redirect_to products_path
     end
-
-    authorize @cart
   end
 
   private
