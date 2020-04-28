@@ -6,9 +6,6 @@
   width: 120px;
 }
 
-.nav-border {
-  border-color: black;
-}
 
 .nav-item {
   display: inline-flex;
@@ -24,6 +21,8 @@ color: #0DBF6C;
 }
 
 .navbar{
+  background-color: transparent;
+  transition: 0.5s background-color ease;
   @media only screen and (max-width: 1090px) {
     .btn-rounded-primary {
       display: block;
@@ -37,4 +36,10 @@ color: #0DBF6C;
     color: #159a5f !important;
     }
   }
+}
+
+.navbar-white {
+  background-color: white;
+  border-bottom: 1px solid rgba(200,200,200,0.5);
+  box-shadow: 0 1px 2px 3px, rgba(200,200,200,0.2)
 }
