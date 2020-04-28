@@ -2,8 +2,9 @@ class Box < ApplicationRecord
   has_many :orders
   has_many :carts
 
-  before_destroy :check_dependents
 
+  before_destroy :check_dependents
+  monetize :price_cents
   enum category: CATEGORIES
 
 

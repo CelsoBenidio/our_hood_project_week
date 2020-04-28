@@ -40,6 +40,18 @@
   border-radius: 50px;
 }
 
+.btn-facebook {
+  color: #3B5998 !important;
+  background-color: white;
+  border-color: #3B5998;
+}
+
+.btn-facebook:hover {
+  color: white !important;
+  background-color: #3B5998;
+  border-color: #3B5998;
+}
+
 .btn-google {
   color: red !important;
   background-color: white;
@@ -50,5 +62,23 @@
   color: white !important;
   background-color: red;
   border-color: red;
+}
+
+.btn-lg-rounded-white{
+  background-color: white;
+  color: #0DBF6C !important;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase !important;
+  padding: 8px 46px;
+  border-radius: 50px;
+  border-color: #10E380;
+}
+
+.btn-lg-rounded-white:hover{
+  background-color: #0DBF6C;
+  color: white !important;
+  text-decoration: none;
 }
 

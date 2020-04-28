@@ -1,5 +1,5 @@
-meta_product_name: "Product Name"
-meta_title: "Product name - Product tagline"
-meta_description: "Relevant description"
-meta_image: "cover.png" # should exist in `app/assets/images/`
+meta_product_name: "OurHood"
+meta_title: "OurHood - Gift Boxes and Unique Products"
+meta_description: "Gift boxes and thousands of unique products from Istanbul's most authentic stores."
+meta_image: "gift_boxes.jpg" # should exist in `app/assets/images/`
 twitter_account: "@product_twitter_account"   # required for Twitter Cards

@@ -66,7 +66,7 @@ class ApplicationController < ActionController::Base
     current_cart.products = guest_cart_products
     current_cart.save
     guest_user.cart.destroy
-
+    guest_user.orders.last.update user_id: current_user.id if guest_user.orders.any?
   end
 
     def create_guest_user
@@ -77,7 +77,7 @@ class ApplicationController < ActionController::Base
     end
 
     def skip_pundit?
-      devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+      devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)|(^omniauth$)/
     end
 end
 
