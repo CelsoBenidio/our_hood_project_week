@@ -29,7 +29,9 @@ const initStripe = async () => {
   const public_key = document.querySelector("meta[name='stripe-public-key']").content;
   const stripe = await loadStripe(public_key);
   const elements = stripe.elements();
-
+  // Create a token or display an error when the form is submitted.
+  const form = document.getElementById('payment-form');
+  const spinner = document.querySelector('#payment-spinner')
   // Custom styling can be passed to options when creating an Element.
   const style = {
     base: {
@@ -46,16 +48,19 @@ const initStripe = async () => {
   card.addEventListener('change', function(event) {
     var displayError = document.getElementById('card-errors');
     if (event.error) {
+      spinner.classList.add('d-none')
       displayError.textContent = event.error.message;
+
     } else {
       displayError.textContent = '';
     }
   });
-  // Create a token or display an error when the form is submitted.
-  var form = document.getElementById('payment-form');
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault()
+
+    spinner.classList.remove('d-none')
+
     const email = paymentContainer.dataset.user
     const order = paymentContainer.dataset.order
 

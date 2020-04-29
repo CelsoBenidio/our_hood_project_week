@@ -3,6 +3,7 @@ class Api::V1::StripeController < Api::V1::BaseController
   def create_a_customer
     begin
       order = Order.find(params[:order_id])
+
       customer = Stripe::Customer.create(
         payment_method: params[:payment_method],
         email: params[:email],
@@ -14,10 +15,9 @@ class Api::V1::StripeController < Api::V1::BaseController
         customer: customer.id,
         items: [
           {
-            plan: order.box.stripe_api_id,
+            plan: order.box.stripe_api_id || 'basic_plan',
           },
-        ],
-        expand: ['latest_invoice.payment_intent'],
+        ]
       )
 
       Stripe::InvoiceItem.create({
@@ -40,7 +40,8 @@ class Api::V1::StripeController < Api::V1::BaseController
       order.user.cart.update box_id: nil
 
       render json: order
-
+    rescue
+      byebug
     end
   end
 end
