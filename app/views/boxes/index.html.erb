@@ -12,7 +12,7 @@
     </div>
     <div class="col-12 col-lg-7 mb-lg-3  bottom">
       <% @boxes.each do |box|  %>
-      <div class="card shadow-sm mb-3 box-card" data-price="<%= box.price %>">
+      <div class="card shadow-sm mb-3 box-card" data-price="<%= box.price %>" data-box-id="<%= box.id %>">
         <div class="bg-transparent d-flex justify-content-between px-3 py-2">
           <h4 class="font-weight-bold text-left mb-0"><%= box.name %></h4>
           <h3 class="text-primary card-title font-weight-bold text-right mb-0"><%= humanized_money_with_symbol box.price %></h3>
