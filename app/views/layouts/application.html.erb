@@ -38,7 +38,7 @@
     <div class="content" data-subtotal="<%= humanized_money_with_symbol(current_or_guest_user.cart.get_total_price/100) %>">
       <%= yield %>
     </div>
-  </div>
+    </div>
     <%= render "shared/footer" %>
     <%= javascript_pack_tag 'application' %>
   </body>

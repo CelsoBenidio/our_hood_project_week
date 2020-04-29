@@ -10,7 +10,11 @@ class Cart < ApplicationRecord
     self.products.each do |product|
       total = total + product.price_cents
     end
-    total + self.box.price_cents
+    if self.box
+      total + self.box.price_cents
+    else
+      total
+    end
   end
 end
 
