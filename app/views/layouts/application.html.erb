@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <%= favicon_link_tag "favicon-32x32.png" %>
@@ -31,15 +32,16 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= tag :meta, name: "stripe-public-key", content: ENV["STRIPE_PUBLISHABLE_KEY"] %>
 </head>
+
 <body class="position-relative" style="min-height: 100vh">
   <%= render 'shared/navbar' %>
   <%= render 'shared/flashes' %>
-    <div class='content <%= SHOULD_SHOW_NAVBAR["#{controller_name}_#{action_name}".to_sym] ? "" : "with-padding" %>'>
-    <div class="content" data-subtotal="<%= humanized_money_with_symbol(current_or_guest_user.cart.get_total_price/100) %>">
-      <%= yield %>
-    </div>
-    </div>
-    <%= render "shared/footer" %>
-    <%= javascript_pack_tag 'application' %>
-  </body>
+  <div class='content <%= SHOULD_SHOW_NAVBAR[controller_with_action] ? "" : "with-padding" %> <%= SHOULD_SHOW_SUBTOTAL_BAR[controller_with_action] ? 'with-subtotal-bar' : '' %>' data-subtotal="<%= humanized_money_with_symbol(current_or_guest_user.cart.get_total_price/100) %>">
+    <%= yield %>
+  </div>
+  <%# if cart bar should be visible -> we show it %>
+  <%= render "shared/footer" %>
+  <%= javascript_pack_tag 'application' %>
+</body>
+
 </html>
