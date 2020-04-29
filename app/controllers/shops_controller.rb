@@ -9,6 +9,7 @@ class ShopsController < ApplicationController
     @shop = Shop.new shop_params
     @shop.save
     redirect_to root_path
+    authorize @shop
   end
 
   private
