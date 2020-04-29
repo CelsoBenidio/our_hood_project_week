@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_28_095904) do
+ActiveRecord::Schema.define(version: 2020_04_29_091840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,8 @@ ActiveRecord::Schema.define(version: 2020_04_28_095904) do
     t.string "status", default: "pending"
     t.string "checkout_session_id"
     t.bigint "box_id"
+    t.string "delivery_address"
+    t.string "delivery_contact_number"
     t.index ["box_id"], name: "index_orders_on_box_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -133,6 +135,7 @@ ActiveRecord::Schema.define(version: 2020_04_28_095904) do
     t.string "provider"
     t.string "uid"
     t.string "remember_token"
+    t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
