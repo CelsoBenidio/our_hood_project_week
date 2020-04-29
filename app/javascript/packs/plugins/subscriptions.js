@@ -2,13 +2,17 @@ import {loadStripe} from '@stripe/stripe-js';
 
 const paymentContainer = document.querySelector('#payment-container')
 const form = document.getElementById('payment-form');
-const submitButton = form.querySelector('button')
-const spinner = document.querySelector('#payment-spinner');
-const deliveryAddress = form.querySelector('#delivery_address')
-const contactNumber = form.querySelector('#delivery_contact_number')
+let submitButton
+let spinner
+let deliveryAddress
+let contactNumber
 
 const initStripe = async () => {
   if (paymentContainer) {
+  submitButton = form.querySelector('button')
+  spinner = document.querySelector('#payment-spinner');
+  deliveryAddress = form.querySelector('#delivery_address')
+  contactNumber = form.querySelector('#delivery_contact_number')
   const public_key = document.querySelector("meta[name='stripe-public-key']").content;
   const stripe = await loadStripe(public_key);
   const elements = stripe.elements();
