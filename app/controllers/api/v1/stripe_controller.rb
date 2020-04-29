@@ -35,7 +35,8 @@ class Api::V1::StripeController < Api::V1::BaseController
       invoice.send_invoice
       Stripe::Invoice.pay(invoice.id)
 
-      order.update status: 'paid'
+      order.update status: 'paid', delivery_address: params[:delivery_address], delivery_contact_number: params[:delivery_contact_number]
+
       order.user.cart.products.destroy_all
       order.user.cart.update box_id: nil
 
