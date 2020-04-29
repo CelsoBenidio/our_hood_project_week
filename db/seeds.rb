@@ -55,7 +55,7 @@ photo_evil_eye = URI.open('https://i.vippng.com/png/small/253-2536114_nazar-bonc
 evil_eye.photo.attach(io: photo_evil_eye, filename: 'evil_eye.png', content_type: 'image/png')
 photo_baklava = URI.open('https://www.imamcagdas.com/cevizli-baklava-1-baklavalar-imam-cagdas-125-35-B.png')
 baklava.photo.attach(io: photo_baklava, filename: 'baklava.png', content_type: 'image/png')
-photo_mantı = URI.open('https://lh3.googleusercontent.com/proxy/E_0GIHJGA_OhJYhEkL1VtD__SvqWRpKGYLqR6hpMSeW5c0xUTJsAxS430Q3Omf6mUXg9Xc5wT8vQ9ktnTwvGkV1F')
+photo_mantı = URI.open('https://pngimage.net/wp-content/uploads/2018/06/mant%C4%B1-png-6.png')
 mantı.photo.attach(io: photo_mantı, filename: 'mantı.png', content_type: 'image/png')
 photo_paste = URI.open('https://pngimage.net/wp-content/uploads/2018/06/sal%C3%A7a-png-.png')
 tomato_paste.photo.attach(io: photo_paste, filename: 'tomato_paste.png', content_type: 'image/png')
