@@ -5,8 +5,13 @@ body {
 
 .content {
   padding-bottom: 50px;
+
   &.with-padding {
     padding-top: 100px;
+  }
+
+  &.with-subtotal-bar {
+    padding-bottom: 250px;
   }
 }
 
