@@ -20,6 +20,7 @@ const initCart = () => {
         } else {
           form.querySelector('input[type="submit"]').disabled = true
           box.classList.remove('selected')
+          showSubTotal()
         }
         })
     })
@@ -28,8 +29,8 @@ const initCart = () => {
 const showSubTotal = (price = null) => {
   const subtotal = document.querySelector('#subtotal')
   const amountWithCurrency = document.querySelector('div[data-subtotal]').dataset.subtotal
-  const currency = amountWithCurrency.substring(0,1)
-  const amount = parseInt(1)
+  const currency = amountWithCurrency[amountWithCurrency.length - 1]
+  const amount = parseInt(amountWithCurrency.slice(0,-1).trim())
   if (subtotal) {
     subtotal.innerText = price ? `${price + amount} ${currency}` : amountWithCurrency
   }
