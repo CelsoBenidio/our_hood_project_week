@@ -3,14 +3,17 @@ class Api::V1::StripeController < Api::V1::BaseController
   def create_a_customer
     begin
       order = Order.find(params[:order_id])
-
-      customer = Stripe::Customer.create(
-        payment_method: params[:payment_method],
-        email: params[:email],
-        invoice_settings: {
-          default_payment_method: params[:payment_method],
-        },
-      )
+      if current_user.stripe_id.nil?
+        customer = Stripe::Customer.create(
+          payment_method: params[:payment_method],
+          email: params[:email],
+          invoice_settings: {
+            default_payment_method: params[:payment_method],
+          },
+        )
+      else
+        customer = Stripe::Customer.retrieve(current_user.stripe_id)
+      end
       subscription = Stripe::Subscription.create(
         customer: customer.id,
         items: [
@@ -22,7 +25,7 @@ class Api::V1::StripeController < Api::V1::BaseController
 
       Stripe::InvoiceItem.create({
         customer: customer.id,
-        amount: order.amount_cents,
+        amount: order.get_products_price,
         currency: 'try',
         description: "Payment for order #{order.id}",
       })
@@ -41,8 +44,8 @@ class Api::V1::StripeController < Api::V1::BaseController
       order.user.cart.update box_id: nil
 
       render json: order
-    rescue
-      byebug
+    rescue Stripe::CardError => e
+      render json: {error:{code:e.http_status, message: e.error.message}}
     end
   end
 end

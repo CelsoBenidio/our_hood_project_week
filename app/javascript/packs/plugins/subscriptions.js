@@ -6,13 +6,14 @@ let submitButton
 let spinner
 let deliveryAddress
 let contactNumber
-
+let displayError
 const initStripe = async () => {
   if (paymentContainer) {
     submitButton = form.querySelector('button')
     spinner = document.querySelector('#payment-spinner');
     deliveryAddress = form.querySelector('#delivery_address')
     contactNumber = form.querySelector('#delivery_contact_number')
+    displayError = document.getElementById('card-errors');
     const public_key = document.querySelector("meta[name='stripe-public-key']").content;
     const stripe = await loadStripe(public_key);
     const elements = stripe.elements();
@@ -31,13 +32,14 @@ const initStripe = async () => {
   card.mount('#card-element');
   // card.mount('#example1-card');
   card.addEventListener('change', function(event) {
-    var displayError = document.getElementById('card-errors');
     if (event.error) {
       spinner.classList.add('d-none')
       submitButton.disabled = true
       displayError.textContent = event.error.message;
+      displayError.classList.remove('d-none')
     } else {
       displayError.textContent = '';
+      displayError.classList.add('d-none')
       submitButton.disabled = false
     }
   });
@@ -67,27 +69,36 @@ const initStripe = async () => {
 }
 }
 
-function stripePaymentMethodHandler(result, email, order) {
+async function stripePaymentMethodHandler(result, email, order) {
   if (result.error) {
-    // Show error in payment form
+    console.log(result.error);
   } else {
     // Otherwise send paymentMethod.id to your server
-    fetch('/api/v1/create_customer', {
-      method: 'post',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        email,
-        order_id: order,
-        delivery_address: deliveryAddress.value,
-        delivery_contact_number: contactNumber.value,
-        payment_method: result.paymentMethod.id
-      }),
-    }).then(function(result) {
-     return result.json();
-   }).then(function(customer) {
-    window.location.replace(`/orders/${order}`)
-  });
- }
+    try {
+      const response = await fetch('/api/v1/create_customer', {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          email,
+          order_id: order,
+          delivery_address: deliveryAddress.value,
+          delivery_contact_number: contactNumber.value,
+          payment_method: result.paymentMethod.id
+        }),
+      })
+      const data = await response.json();
+
+      if (data.error){
+        displayError.textContent = data.error.message;
+        spinner.classList.add('d-none')
+        displayError.classList.remove('d-none')
+      } else {
+        window.location.replace(`/orders/${order}`)
+      }
+    } catch(error){
+      console.log(error)
+    }
+  }
 }
 
 export {initStripe}
