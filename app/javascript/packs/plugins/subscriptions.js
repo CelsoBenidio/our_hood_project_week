@@ -2,16 +2,20 @@ import {loadStripe} from '@stripe/stripe-js';
 
 const paymentContainer = document.querySelector('#payment-container')
 const form = document.getElementById('payment-form');
-const submitButton = form.querySelector('button')
-const spinner = document.querySelector('#payment-spinner');
-const deliveryAddress = form.querySelector('#delivery_address')
-const contactNumber = form.querySelector('#delivery_contact_number')
+let submitButton
+let spinner
+let deliveryAddress
+let contactNumber
 
 const initStripe = async () => {
   if (paymentContainer) {
-  const public_key = document.querySelector("meta[name='stripe-public-key']").content;
-  const stripe = await loadStripe(public_key);
-  const elements = stripe.elements();
+    submitButton = form.querySelector('button')
+    spinner = document.querySelector('#payment-spinner');
+    deliveryAddress = form.querySelector('#delivery_address')
+    contactNumber = form.querySelector('#delivery_contact_number')
+    const public_key = document.querySelector("meta[name='stripe-public-key']").content;
+    const stripe = await loadStripe(public_key);
+    const elements = stripe.elements();
 
   // Custom styling can be passed to options when creating an Element.
   const style = {
@@ -60,7 +64,7 @@ const initStripe = async () => {
       form.classList.add('was-validated')
     }
   })
-  }
+}
 }
 
 function stripePaymentMethodHandler(result, email, order) {
@@ -80,10 +84,10 @@ function stripePaymentMethodHandler(result, email, order) {
       }),
     }).then(function(result) {
      return result.json();
-    }).then(function(customer) {
-      window.location.replace(`/orders/${order}`)
-    });
-  }
+   }).then(function(customer) {
+    window.location.replace(`/orders/${order}`)
+  });
+ }
 }
 
 export {initStripe}

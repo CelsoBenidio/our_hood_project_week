@@ -31,13 +31,11 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= tag :meta, name: "stripe-public-key", content: ENV["STRIPE_PUBLISHABLE_KEY"] %>
 </head>
-<body class="position-relative" style="min-height: 100vh">
+<body class="position-relative <%= controller_name == 'orders' && action_name == 'show' ? 'checkout-bg' : '' %>" style="min-height: 100vh">
   <%= render 'shared/navbar' %>
   <%= render 'shared/flashes' %>
-    <div class='content <%= SHOULD_SHOW_NAVBAR["#{controller_name}_#{action_name}".to_sym] ? "" : "with-padding" %>'>
-    <div class="content" data-subtotal="<%= humanized_money_with_symbol(current_or_guest_user.cart.get_total_price/100) %>">
+    <div class='content <%= SHOULD_SHOW_NAVBAR["#{controller_name}_#{action_name}".to_sym] ? "" : "with-padding" %>' data-subtotal="<%= humanized_money_with_symbol(current_or_guest_user.cart.get_total_price/100) %>">
       <%= yield %>
-    </div>
     </div>
     <%= render "shared/footer" %>
     <%= javascript_pack_tag 'application' %>
