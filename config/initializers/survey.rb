@@ -1,13 +1,13 @@
 SURVEY = {
   QUESTIONS: [
     {
-      content: 'First things first, tell us your name.',
+      content: 'First things first, please tell us your name.',
       id: 'name',
       type: 'text',
       type_order: '1 of 7'
     },
     {
-      content: 'What is your age?',
+      content: "If you don't mind us asking, what's your age?",
       id: 'age',
       type: 'radio',
       type_order: '2 of 7',
@@ -21,14 +21,14 @@ SURVEY = {
       ]
     },
     {
-      content: 'What is your gender?',
+      content: 'And your gender?',
       id: 'gender',
       type: 'radio',
       type_order: '3 of 7',
       options: [
-        'male',
-        'female',
-        'prefer not to answer'
+        'Male',
+        'Female',
+        'Prefer not to answer'
       ]
     },
     {
@@ -39,7 +39,7 @@ SURVEY = {
       options: CATEGORIES
     },
     {
-      content: 'How often do you visit them?',
+      content: 'And how often do you visit them?',
       id: 'visit_frequency',
       type: 'radio',
       type_order: '5 of 7',
