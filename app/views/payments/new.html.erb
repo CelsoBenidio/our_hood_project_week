@@ -1,5 +1,5 @@
 <div class="container" id="payment-container" data-order="<%= @order.id %>" data-user="<%= current_user.email %>">
-  <%= form_tag new_order_payment_path, id: "payment-form" do |form| %>
+  <%= form_tag new_order_payment_path, id: "payment-form", novalidate: 'novalidate' do |form| %>
   <div class="row">
     <div class="col">
       <h4 class="d-flex justify-content-center mt-5">
@@ -32,6 +32,20 @@
     </div>
   </div>
   <div class="group">
+    <div class="row">
+      <div class="col-12 col-lg-6 form-group">
+        <input type="text" placeholder="Delivery address" class="form-control" id="delivery_address" required>
+        <div class="invalid-feedback">
+          Please provide a valid address.
+        </div>
+      </div>
+      <div class="col-12 col-lg-6 form-group">
+        <input type="text" placeholder="Phone number" class="form-control" id="delivery_contact_number" required>
+        <div class="invalid-feedback">
+          Please provide a valid phone number.
+        </div>
+      </div>
+    </div>
     <div class="row w-100">
       <div id="card-element" class="col-8 align-items-center field w-100 mb-3 pt-2"></div>
       <div class="col-4 d-flex justify-content-end">
