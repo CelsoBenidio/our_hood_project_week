@@ -36,7 +36,7 @@
 <body class="position-relative" style="min-height: 100vh">
   <%= render 'shared/navbar' %>
   <%= render 'shared/flashes' %>
-  <div class='content <%= SHOULD_SHOW_NAVBAR[controller_with_action] ? "" : "with-padding" %> <%= SHOULD_SHOW_SUBTOTAL_BAR[controller_with_action] ? 'with-subtotal-bar' : '' %>' data-subtotal="<%= humanized_money_with_symbol(current_or_guest_user.cart.get_total_price/100) %>">
+  <div class='content <%= SHOULD_SHOW_NAVBAR[controller_with_action] ? "" : "with-padding" %> <%= SHOULD_SHOW_SUBTOTAL_BAR[controller_with_action] ? 'with-subtotal-bar' : '' %>' data-selected-box="<%= current_or_guest_user&.cart&.box_id%>" data-subtotal="<%= humanized_money_with_symbol(current_or_guest_user.cart.get_total_price/100) %>">
     <%= yield %>
   </div>
   <%# if cart bar should be visible -> we show it %>

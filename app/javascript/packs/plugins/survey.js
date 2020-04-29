@@ -3,6 +3,12 @@ const nextButton = document.querySelector('.next-button')
 const initSurvey = () => {
 
   if (nextButton) {
+    window.addEventListener('keydown', (event) => {
+      console.log(event)
+      if (event.keyCode === 13) {
+        event.preventDefault()
+      }
+    })
     document.addEventListener('click', (event) => {
       const sections = document.querySelectorAll('section.scroll-section')
       const activeSection = document.querySelector('section.scroll-section.active')
