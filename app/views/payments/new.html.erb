@@ -7,25 +7,27 @@
       </h4>
       <ul class="list-group mb-3">
         <% if @order.products.any? %>
-        <li class="list-group-item d-flex justify-content-between lh-condensed bg-primary text-white">
-          <h6>Products</h6>
-        </li>
-        <% @order.products.each do |product| %>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <h6 class="my-0"><%= product.name %></h6>
-          <span class="text-muted"><%= humanized_money_with_symbol product.price %></span>
-        </li>
+          <li class="list-group-item d-flex justify-content-between lh-condensed bg-primary text-white py-2">
+            <h6 class="mb-0">Products</h6>
+          </li>
+          <% @order.products.each do |product| %>
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <h6 class="my-0"><%= product.name %></h6>
+              <span class="text-muted"><%= humanized_money_with_symbol product.price %></span>
+            </li>
+          <% end %>
         <% end %>
+        <% if !@order.box.nil? %>
+          <li class="list-group-item d-flex justify-content-between lh-condensed bg-primary text-white py-2">
+            <h6 class="mb-0">Box</h6>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <h6 class="my-0"><%= @order.box.name %></h6>
+            <span class="text-muted"><%= humanized_money_with_symbol @order.box.price %></span>
+          </li>
         <% end %>
-        <li class="list-group-item d-flex justify-content-between lh-condensed bg-primary text-white">
-          <h6>Box</h6>
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <h6 class="my-0"><%= @order.box.name %></h6>
-          <span class="text-muted"><%= humanized_money_with_symbol @order.box.price %></span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed bg-primary text-white">
-          <h6 class="my-0">TOTAL (TRY)</h6>
+        <li class="list-group-item d-flex justify-content-between lh-condensed bg-primary text-white py-2">
+          <h6 class="my-0 mb-0">TOTAL (TRY)</h6>
           <h5 class="my-0"><%= humanized_money_with_symbol @order.amount %></h5>
         </li>
       </ul>
