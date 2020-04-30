@@ -12,7 +12,7 @@
     </div>
     <div class="col-12 col-lg-7 mb-lg-3  bottom">
       <% @boxes.each do |box|  %>
-      <div class="card shadow-sm mb-3 box-card" data-price="<%= box.price %>">
+      <div class="card shadow-sm mb-3 box-card" data-price="<%= box.price %>" data-box-id="<%= box.id %>">
         <div class="bg-transparent d-flex justify-content-between px-3 py-2">
           <h4 class="font-weight-bold text-left mb-0"><%= box.name %></h4>
           <h3 class="text-primary card-title font-weight-bold text-right mb-0"><%= humanized_money_with_symbol box.price %></h3>
@@ -20,7 +20,7 @@
         <div class="card-body">
           <% if current_or_guest_user.preference %>
           <p class="card-text">
-            With this plan you will receive a surprise box of tailored <%= current_or_guest_user.preference.stringify_categories %> items, among others
+            With this plan you will receive a surprise box of tailored <%= current_or_guest_user.preference.stringify_categories %> items, among others.
           </p>
           <% end %>
           <input class="form-check-input boolean optional d-none" type="radio" value="<%= box.id %>" name="cart[box_id]">
@@ -34,11 +34,12 @@
 <div class="checkout-yellow-banner p-3">
   <div class="row w-100 d-flex justify-content-end">
     <div class="col-12 col-lg-5 mx-auto mx-lg-0 mr-lg-3 mb-2 mb-lg-0">
-      <h4 class="my-0 text-center text-lg-right" >Sub-total: <span id="subtotal"></span></h4>
-      <p class="my-0 text-center text-lg-right">10% discount on your first order.</p>
+      <h4 class="my-0 text-center text-lg-right">Sub-total: <span id="subtotal"></span></h4>
+      <p class="my-0 text-center text-lg-right">Enjoy free delivery in Istanbul!</p>
     </div>
-    <%= f.submit "Continue", class: "btn-lg-rounded-primary col-lg-2 mr-2 border-0", disabled: true %>
+    <div class='col-12 col-lg-2 d-flex align-items-center'>
+      <%= f.submit "Continue", class: "btn-lg-rounded-primary w-100 border-0 mr-2 px-0", disabled: true %>
+    </div>
   </div>
 </div>
 <% end %>
-

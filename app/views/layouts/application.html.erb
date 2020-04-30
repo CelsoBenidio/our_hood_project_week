@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <%= favicon_link_tag "favicon-32x32.png" %>
@@ -31,6 +32,7 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= tag :meta, name: "stripe-public-key", content: ENV["STRIPE_PUBLISHABLE_KEY"] %>
 </head>
+
 <body class="position-relative <%= controller_name == 'orders' && action_name == 'show' ? 'checkout-bg' : '' %>" style="min-height: 100vh">
   <%= render 'shared/navbar' %>
   <%= render 'shared/flashes' %>
@@ -40,4 +42,5 @@
     <%= render "shared/footer" %>
     <%= javascript_pack_tag 'application' %>
   </body>
+
 </html>

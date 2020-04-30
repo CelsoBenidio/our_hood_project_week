@@ -7,6 +7,7 @@ let spinner
 let deliveryAddress
 let contactNumber
 let displayError
+
 const initStripe = async () => {
   if (paymentContainer) {
     submitButton = form.querySelector('button')
