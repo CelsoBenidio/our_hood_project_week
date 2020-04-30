@@ -7,11 +7,11 @@
     <div class="scrolling-wrapper w-100">
       <% @products.each do |product| %>
       <div class="col-12 col-lg-5">
-        <div class="card my-3 product-card">
-          <div class="row">
-            <div class="col-6 px-0 product-image" style="background-image: url('<%= product.photo.attached? ? cl_image_path(product.photo.key) : product.default_picture %>')">
+        <div class="card my-3 product-card d-flex">
+          <div class="d-flex product-card--content">
+            <div class="product-image w-100" style="background-image: url('<%= product.photo.attached? ? cl_image_path(product.photo.key) : product.default_picture %>')">
             </div>
-            <div class=" col-6">
+            <div class="w-100 product-text">
               <p id="category_name" class="pt-3"><%= product.category %></p>
               <h1 id="product_name"><%= product.name %></h1>
               <h2 id="price"><%= humanized_money_with_symbol(product.price) %></h2>

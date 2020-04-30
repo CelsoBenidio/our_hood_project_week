@@ -52,3 +52,9 @@
 .col-12.col-lg-6.bottom{
   margin-bottom: 150px;
 }
+
+@media only screen and (max-width: 768px) {
+  h3, h4 {
+    font-size: 24px;
+  }
+}
