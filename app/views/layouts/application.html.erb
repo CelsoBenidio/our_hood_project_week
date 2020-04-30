@@ -33,9 +33,10 @@
   <%= tag :meta, name: "stripe-public-key", content: ENV["STRIPE_PUBLISHABLE_KEY"] %>
 </head>
 
-<body class="position-relative <%= controller_with_action %>" style="min-height: 100vh">
+<body class="position-relative <%= controller_name == 'orders' && action_name == 'show' ? 'checkout-bg' : '' %>" style="min-height: 100vh">
   <%= render 'shared/navbar' %>
   <%= render 'shared/flashes' %>
+
   <div class='content <%= SHOULD_SHOW_NAVBAR[controller_with_action] ? "" : "with-padding" %> <%= SHOULD_SHOW_SUBTOTAL_BAR[controller_with_action] ? 'with-subtotal-bar' : '' %>' data-selected-box="<%= current_or_guest_user&.cart&.box_id%>" data-box-price="<%=  current_or_guest_user&.cart&.box&.price %>" data-products-price="<%= current_or_guest_user.cart.get_products_price/100 %>">
     <%= yield %>
   </div>
@@ -43,5 +44,4 @@
   <%= render "shared/footer" %>
   <%= javascript_pack_tag 'application' %>
 </body>
-
 </html>
