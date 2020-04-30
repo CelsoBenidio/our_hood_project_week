@@ -4,7 +4,7 @@ const form = document.querySelector('.edit_cart')
 let firstLoad = true
 const productsPrice = parseInt(document.querySelector('div[data-products-price]').dataset.productsPrice)
 const currency = '₺'
-let boxPrice = parseInt(document.querySelector('div[data-box-price]').dataset.boxPrice)
+let boxPrice = parseInt(document.querySelector('div[data-box-price]').dataset.boxPrice || 0)
 
 const initCart = () => {
   if (boxes.length) {
