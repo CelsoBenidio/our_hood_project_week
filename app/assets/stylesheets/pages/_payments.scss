@@ -3,3 +3,11 @@
     color: black;
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .orders_show {
+    .delivery-summary {
+      flex-direction: column;
+    }
+  }
+}
