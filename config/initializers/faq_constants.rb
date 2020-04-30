@@ -1,7 +1,7 @@
 FAQ = [
   {
  question: "What kind of products can I find on my surprise box?",
- answer: "According to the plan you chose, we will prepare a monthly surprise box of 5 to 10 items of the most unique Turkish delights."
+ answer: "According to the plan you chose, we will prepare a monthly surprise box of 3 to 5 items of the most unique Turkish delights."
 },
 {
  question: "How often can I receive my surprise box?",
