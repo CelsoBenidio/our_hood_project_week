@@ -33,7 +33,7 @@
   <%= tag :meta, name: "stripe-public-key", content: ENV["STRIPE_PUBLISHABLE_KEY"] %>
 </head>
 
-<body class="position-relative <%= controller_name == 'orders' && action_name == 'show' ? 'checkout-bg' : '' %>" style="min-height: 100vh">
+<body class="position-relative min-vh-100 <%= controller_with_action %> <%= controller_name == 'orders' && action_name == 'show' ? 'checkout-bg' : '' %>">
   <%= render 'shared/navbar' %>
   <%= render 'shared/flashes' %>
 
@@ -44,4 +44,5 @@
   <%= render "shared/footer" %>
   <%= javascript_pack_tag 'application' %>
 </body>
+
 </html>
