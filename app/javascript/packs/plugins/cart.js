@@ -2,9 +2,9 @@ const boxes = document.querySelectorAll('.box-card')
 const form = document.querySelector('.edit_cart')
 
 let firstLoad = true
-const amountWithCurrency = document.querySelector('div[data-subtotal]').dataset.subtotal
-const currency = amountWithCurrency[amountWithCurrency.length - 1]
-let amount = parseInt(amountWithCurrency.slice(0,-1).trim())
+const productsPrice = parseInt(document.querySelector('div[data-products-price]').dataset.productsPrice)
+const currency = '₺'
+let boxPrice = parseInt(document.querySelector('div[data-box-price]').dataset.boxPrice)
 
 const initCart = () => {
   if (boxes.length) {
@@ -15,7 +15,8 @@ const initCart = () => {
         const currentActive = document.querySelector('.box-card.selected')
         if (currentActive) {
           currentActive.classList.remove('selected')
-          showSubTotal(-Math.abs(parseInt(currentActive.dataset.price)))
+          boxPrice = boxPrice - parseInt(currentActive.dataset.price)
+          // showSubTotal(-Math.abs(parseInt(currentActive.dataset.price)))
         }
         const input = box.querySelector('input')
         input.checked = !input.checked
@@ -25,32 +26,38 @@ const initCart = () => {
         if (firstLoad) {
           firstLoad = false
         } else {
-          showSubTotal(parseInt(box.dataset.price))
+          boxPrice = boxPrice + parseInt(box.dataset.price)
+          showSubTotal()
         }
         } else {
           form.querySelector('input[type="submit"]').disabled = true
           box.classList.remove('selected')
-          showSubTotal(-Math.abs(parseInt(box.dataset.price)))
+          boxPrice = boxPrice - parseInt(box.dataset.price)
+          showSubTotal()
         }
         })
     })
     const selectedBox = document.querySelector("div[data-selected-box]").dataset.selectedBox
     if (selectedBox) {
       const selectedDiv = document.querySelector(`div[data-box-id="${selectedBox}"]`)
+      setTimeout(() => {
+      if (!selectedDiv.classList.contains('selected')) {
       selectedDiv.click()
-      console.log(selectedDiv)
+      console.log(selectedDiv.classList)
+      }
+      }, 300)
     } else {
       form.querySelector('input[type="submit"]').disabled = true
     }
   }
 }
-const showSubTotal = (price = 0) => {
+const showSubTotal = () => {
   const subtotal = document.querySelector('#subtotal')
   if (subtotal) {
-    amount = amount + price
-    if (amount < 0) {
-      amount = 0
+    if (boxPrice < 0) {
+      boxPrice = 0
     }
+    let amount = productsPrice + boxPrice
     subtotal.innerText = `${amount} ${currency}`
   }
 }
