@@ -30,9 +30,9 @@
       </div>
       <% end %>
       <% if @cart.products.any? %>
-      <div class="col-12 my-3 products-container p-0">
+      <div class="col-12 my-3 products-container p-0 pb-3">
         <% @products.each do |product| %>
-        <div class="card mb-5 ml-lg-3 product-card" style="border-radius: 0; box-shadow: none">
+        <!--<div class="card mb-5 ml-lg-3 product-card" style="border-radius: 0; box-shadow: none">
           <div class="row">
             <div class="col-6 px-0 product-image" style="background-image: url('<%= product.photo.attached? ? cl_image_path(product.photo.key) : product.default_picture %>')">
             </div>
@@ -45,7 +45,7 @@
                 <div class="prdct-buttons">
                   <% if current_or_guest_user.cart.products.include?(product) %>
                   <%= simple_form_for CartProduct.where(product: product, cart: current_or_guest_user.cart).first, :method => :delete, html: {class: 'd-flex justify-content-end'} do |f| %>
-                  <%= f.submit "Remove from cart", class: "boxes btn btn-primary text-white btn-sm shadow-0" %>
+                  <%= f.submit "Remove item", class: "boxes btn btn-primary text-white btn-sm shadow-0" %>
                   <% end %>
                   <% else %>
                   <%= simple_form_for @cart_product, html: {class: 'd-flex justify-content-end'} do |f| %>
@@ -57,7 +57,33 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
+          <div class="card my-3 product-card d-flex">
+            <div class="d-flex product-card--content">
+              <div class="product-image w-100" style="background-image: url('<%= product.photo.attached? ? cl_image_path(product.photo.key) : product.default_picture %>')">
+              </div>
+              <div class="w-100 product-text">
+                <p id="category_name" class="pt-3"><%= product.category %></p>
+                <h1 id="product_name"><%= product.name %></h1>
+                <h2 id="price"><%= humanized_money_with_symbol(product.price) %></h2>
+                <div class="py-3 w-100">
+                  <p class="desc px-3"><%= product.description %></p>
+                  <div class="prdct-buttons w-100">
+                    <% if current_or_guest_user.cart.products.include?(product) %>
+                    <%= simple_form_for CartProduct.where(product: product, cart: current_or_guest_user.cart).first, :method => :delete do |f| %>
+                    <%= f.submit "Remove item", class: "card_button" %>
+                    <% end %>
+                    <% else %>
+                    <%= simple_form_for @cart_product do |f| %>
+                    <%= f.hidden_field :product_id, value: product.id  %>
+                    <%= f.submit "Add to cart", class: "card_button" %>
+                    <% end %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         <% end %>
       </div>
       <% end %>

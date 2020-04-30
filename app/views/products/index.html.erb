@@ -4,7 +4,7 @@
   </div>
 </div>
   <div class="row">
-    <div class="scrolling-wrapper w-100">
+    <div class="scrolling-wrapper w-100 pb-3">
       <% @products.each do |product| %>
       <div class="col-12 col-lg-5">
         <div class="card my-3 product-card d-flex">
@@ -16,11 +16,11 @@
               <h1 id="product_name"><%= product.name %></h1>
               <h2 id="price"><%= humanized_money_with_symbol(product.price) %></h2>
               <div class="py-3">
-                <p class="desc"><%= product.description %></p>
+                <p class="desc px-3"><%= product.description %></p>
                 <div class="prdct-buttons">
                   <% if current_or_guest_user.cart.products.include?(product) %>
                   <%= simple_form_for CartProduct.where(product: product, cart: current_or_guest_user.cart).first, :method => :delete do |f| %>
-                  <%= f.submit "Remove from cart", class: "card_button" %>
+                  <%= f.submit "Remove item", class: "card_button" %>
                   <% end %>
                   <% else %>
                   <%= simple_form_for @cart_product do |f| %>
