@@ -84,6 +84,11 @@
           display: flex;
           justify-content: center;
           width: 100%;
+
+          .btn {
+            width: 100%;
+            margin: 0 15px;
+          }
         }
       }
     }

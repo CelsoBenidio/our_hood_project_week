@@ -3,45 +3,45 @@
     <h1>Complement your box with additional <strong>unique</strong> products.</h1>
   </div>
 </div>
-  <div class="row">
-    <div class="scrolling-wrapper w-100 pb-3">
-      <% @products.each do |product| %>
-      <div class="col-12 col-lg-5">
-        <div class="card my-3 product-card d-flex">
-          <div class="d-flex product-card--content">
-            <div class="product-image w-100" style="background-image: url('<%= product.photo.attached? ? cl_image_path(product.photo.key) : product.default_picture %>')">
-            </div>
-            <div class="w-100 product-text">
-              <p id="category_name" class="pt-3"><%= product.category %></p>
-              <h1 id="product_name"><%= product.name %></h1>
-              <h2 id="price"><%= humanized_money_with_symbol(product.price) %></h2>
-              <div class="py-3">
-                <p class="desc px-3"><%= product.description %></p>
-                <div class="prdct-buttons">
-                  <% if current_or_guest_user.cart.products.include?(product) %>
-                  <%= simple_form_for CartProduct.where(product: product, cart: current_or_guest_user.cart).first, :method => :delete do |f| %>
-                  <%= f.submit "Remove item", class: "card_button" %>
-                  <% end %>
-                  <% else %>
-                  <%= simple_form_for @cart_product do |f| %>
-                  <%= f.hidden_field :product_id, value: product.id  %>
-                  <%= f.submit "Add to cart", class: "card_button" %>
-                  <% end %>
-                  <% end %>
-                </div>
+<div class="row">
+  <div class="scrolling-wrapper w-100 pb-3">
+    <% @products.each do |product| %>
+    <div class="col-12 col-lg-5">
+      <div class="card my-3 product-card d-flex">
+        <div class="d-flex product-card--content">
+          <div class="product-image w-100" style="background-image: url('<%= product.photo.attached? ? cl_image_path(product.photo.key) : product.default_picture %>')">
+          </div>
+          <div class="w-100 product-text">
+            <p id="category_name" class="pt-3"><%= product.category %></p>
+            <h1 id="product_name"><%= product.name %></h1>
+            <h2 id="price"><%= humanized_money_with_symbol(product.price) %></h2>
+            <div class="py-3">
+              <p class="desc px-3"><%= product.description %></p>
+              <div class="prdct-buttons w-100">
+                <% if current_or_guest_user.cart.products.include?(product) %>
+                <%= simple_form_for CartProduct.where(product: product, cart: current_or_guest_user.cart).first, html: { class: 'd-flex justify-content-end mx-0 mx-lg-3'}, :method => :delete do |f| %>
+                <%= f.submit "Remove item", class: "boxes btn btn-primary text-white btn-sm shadow-0" %>
+                <% end %>
+                <% else %>
+                <%= simple_form_for @cart_product, html: { class: 'd-flex justify-content-end mx-0 mx-lg-3'} do |f| %>
+                <%= f.hidden_field :product_id, value: product.id  %>
+                <%= f.submit "Add to cart", class: "boxes btn btn-primary text-white btn-sm shadow-0" %>
+                <% end %>
+                <% end %>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <% end %>
     </div>
+    <% end %>
   </div>
+</div>
 
 <div class="checkout-yellow-banner p-3 ">
   <div class="row w-100 d-flex justify-content-end card-summary">
     <div class="col-12 col-lg-5 mx-auto mx-lg-0 mr-lg-3 mb-2 mb-lg-0">
-      <h4 class="my-0 text-center text-lg-right" >Sub-total: <span id="subtotal"></span></h4>
+      <h4 class="my-0 text-center text-lg-right">Sub-total: <span id="subtotal"></span></h4>
       <p class="my-0 text-center text-lg-right">Enjoy free delivery in Istanbul!</p>
     </div>
     <div class='col-12 col-lg-2 d-flex align-items-center'>

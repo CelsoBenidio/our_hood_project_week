@@ -11,7 +11,7 @@
     <% if @cart.box %>
     <div class="col-12 bottom <%= @cart.products.any? ? '' : 'mx-auto' %>">
       <h2 class="px-3 mt-5 mb-4 text-primary">Your Shopping Cart</h2>
-      <div class="card border ml-lg-3">
+      <div class="card product-card border">
         <div class="bg-transparent d-flex justify-content-between px-3 py-2">
           <h4 class="text-primary font-weight-bold text-left mb-0"><%= @box&.name %></h4>
           <h3 class="text-primary card-title font-weight-bold text-right mb-0"><%= humanized_money_with_symbol @box&.price %></h3>
@@ -23,7 +23,7 @@
           <%= simple_form_for @cart, url: cart_path, html: {class: 'd-flex justify-content-end'} do |f| %>
           <%= f.hidden_field :box_id, value: nil %>
           <div class="boxes btn btn-primary text-white btn-sm shadow-0">
-            <%= f.submit "REMOVE FROM CART", class: "bg-transparent text-white border-0 shadow-0 d-flex justify-content-end" %>
+            <%= f.submit "REMOVE ITEM", class: "bg-transparent text-white border-0 shadow-0 d-flex justify-content-end" %>
           </div>
           <% end %>
         </div>
@@ -32,23 +32,23 @@
       <% if @cart.products.any? %>
       <div class="col-12 my-3 products-container p-0 pb-3">
         <% @products.each do |product| %>
-        <!--<div class="card mb-5 ml-lg-3 product-card" style="border-radius: 0; box-shadow: none">
-          <div class="row">
-            <div class="col-6 px-0 product-image" style="background-image: url('<%= product.photo.attached? ? cl_image_path(product.photo.key) : product.default_picture %>')">
+        <div class="card my-3 product-card d-flex">
+          <div class="d-flex product-card--content">
+            <div class="product-image w-100" style="background-image: url('<%= product.photo.attached? ? cl_image_path(product.photo.key) : product.default_picture %>')">
             </div>
-            <div class=" col-6">
+            <div class="w-100 product-text">
               <p id="category_name" class="pt-3"><%= product.category %></p>
               <h1 id="product_name"><%= product.name %></h1>
-              <h2 id="price"><%= product.price %>₺</h2>
-              <div class="py-3">
-                <p class="desc"><%= product.description %></p>
-                <div class="prdct-buttons">
+              <h2 id="price"><%= humanized_money_with_symbol(product.price) %></h2>
+              <div class="py-3 w-100">
+                <p class="desc px-3"><%= product.description %></p>
+                <div class="prdct-buttons w-100">
                   <% if current_or_guest_user.cart.products.include?(product) %>
-                  <%= simple_form_for CartProduct.where(product: product, cart: current_or_guest_user.cart).first, :method => :delete, html: {class: 'd-flex justify-content-end'} do |f| %>
+                  <%= simple_form_for CartProduct.where(product: product, cart: current_or_guest_user.cart).first, html: { class: 'd-flex justify-content-end mx-0 mx-lg-3'}, :method => :delete do |f| %>
                   <%= f.submit "Remove item", class: "boxes btn btn-primary text-white btn-sm shadow-0" %>
                   <% end %>
                   <% else %>
-                  <%= simple_form_for @cart_product, html: {class: 'd-flex justify-content-end'} do |f| %>
+                  <%= simple_form_for @cart_product, html: { class: 'd-flex justify-content-end mx-0 mx-lg-3'} do |f| %>
                   <%= f.hidden_field :product_id, value: product.id  %>
                   <%= f.submit "Add to cart", class: "boxes btn btn-primary text-white btn-sm shadow-0" %>
                   <% end %>
@@ -57,33 +57,7 @@
               </div>
             </div>
           </div>
-        </div>-->
-          <div class="card my-3 product-card d-flex">
-            <div class="d-flex product-card--content">
-              <div class="product-image w-100" style="background-image: url('<%= product.photo.attached? ? cl_image_path(product.photo.key) : product.default_picture %>')">
-              </div>
-              <div class="w-100 product-text">
-                <p id="category_name" class="pt-3"><%= product.category %></p>
-                <h1 id="product_name"><%= product.name %></h1>
-                <h2 id="price"><%= humanized_money_with_symbol(product.price) %></h2>
-                <div class="py-3 w-100">
-                  <p class="desc px-3"><%= product.description %></p>
-                  <div class="prdct-buttons w-100">
-                    <% if current_or_guest_user.cart.products.include?(product) %>
-                    <%= simple_form_for CartProduct.where(product: product, cart: current_or_guest_user.cart).first, :method => :delete do |f| %>
-                    <%= f.submit "Remove item", class: "card_button" %>
-                    <% end %>
-                    <% else %>
-                    <%= simple_form_for @cart_product do |f| %>
-                    <%= f.hidden_field :product_id, value: product.id  %>
-                    <%= f.submit "Add to cart", class: "card_button" %>
-                    <% end %>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        </div>
         <% end %>
       </div>
       <% end %>
