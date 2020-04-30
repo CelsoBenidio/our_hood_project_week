@@ -22,7 +22,7 @@ class Api::V1::StripeController < Api::V1::BaseController
           },
         ]
       )
-
+      if order.get_products_price > 0
       Stripe::InvoiceItem.create({
         customer: customer.id,
         amount: order.get_products_price,
@@ -37,6 +37,7 @@ class Api::V1::StripeController < Api::V1::BaseController
       })
       invoice.send_invoice
       Stripe::Invoice.pay(invoice.id)
+    end
 
       order.update status: 'paid', delivery_address: params[:delivery_address], delivery_contact_number: params[:delivery_contact_number]
 
