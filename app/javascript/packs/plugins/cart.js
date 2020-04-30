@@ -41,23 +41,32 @@ const initCart = () => {
     if (selectedBox) {
       const selectedDiv = document.querySelector(`div[data-box-id="${selectedBox}"]`)
       setTimeout(() => {
-      if (!selectedDiv.classList.contains('selected')) {
-      selectedDiv.click()
-      console.log(selectedDiv.classList)
-      }
+        if (!selectedDiv.classList.contains('selected')) {
+          selectedDiv.click()
+        }
       }, 300)
     } else {
+      firstLoad = false
       form.querySelector('input[type="submit"]').disabled = true
     }
   }
 }
 const showSubTotal = () => {
   const subtotal = document.querySelector('#subtotal')
+  const yellowBanner = document.querySelector('.checkout-yellow-banner')
+
   if (subtotal) {
     if (boxPrice < 0) {
       boxPrice = 0
     }
     let amount = productsPrice + boxPrice
+
+    if (amount > 0) {
+      yellowBanner.classList.remove('subtotal_0')
+    } else {
+      yellowBanner.classList.add('subtotal_0')
+    }
+
     subtotal.innerText = `${amount} ${currency}`
   }
 }

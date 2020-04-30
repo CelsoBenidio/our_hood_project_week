@@ -134,6 +134,7 @@
 
 .checkout-yellow-banner {
   position: absolute;
+  opacity: 1;
   width: 100%;
   bottom: 100px;
   display: flex;
@@ -141,4 +142,9 @@
   text-align: right;
   background-color: #fadb7e;
   justify-content: right;
+  transition: all 1s linear 0.3s;
+
+  &.subtotal_0 {
+    opacity: 0;
+  }
 }
