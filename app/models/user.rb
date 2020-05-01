@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_one :cart, dependent: :destroy
   has_one_attached :avatar
 
+  validate :password_complexity
 
   after_create :add_cart_to_user
 
@@ -25,7 +26,14 @@ class User < ApplicationRecord
   end
 
   private
+
   def add_cart_to_user
-  self.cart = Cart.create unless self.cart
+    self.cart = Cart.create unless self.cart
+  end
+
+  def password_complexity
+    # regex to check: 1 uppercase, 1 lowercase, 1 digit, 1 special char
+    return if password.blank? || password =~ /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,70}$/
+    errors.add :password, 'too weak. It should contain at least 1 uppercase, 1 lowercase, 1 digit and 1 special character'
   end
 end
