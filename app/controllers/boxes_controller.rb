@@ -9,7 +9,7 @@ class BoxesController < ApplicationController
     # categories = current_user.preference.favorite_product
     # categories.shift # equal to ["clothing", "electronics"]
 
-    @boxes = policy_scope(Box)
+    @boxes = policy_scope(Box).order(:price_cents)
 
     # @boxes = Box.where(category: categories)
     # check if box.category is included in current_user.preference.favorite_product

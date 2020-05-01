@@ -22,9 +22,9 @@ puts "Preference created"
 
 # 4 - Add box to the order
 
-first_box = Box.create(name: 'Basic plan (3 items)', price: 60, description: "the most suitable for you", category: "confections", stripe_api_id: 'basic_plan')
-second_box = Box.create(name: 'Premium plan (4 items)', price: 75, description: "the most suitable for you", category: "confections", stripe_api_id: 'basic_plan')
-third_box = Box.create(name: 'Pro plan (5 items)', price: 90, description: "the most suitable for you", category: "confections", stripe_api_id: 'basic_plan')
+first_box = Box.create(name: 'Basic plan', price: 60, description: "the most suitable for you", category: "confections", stripe_api_id: 'basic_plan')
+second_box = Box.create(name: 'Premium plan', price: 75, description: "the most suitable for you", category: "confections", stripe_api_id: 'premium_plan')
+third_box = Box.create(name: 'Pro plan', price: 90, description: "the most suitable for you", category: "confections", stripe_api_id: 'pro_plan')
 
 puts "Boxes created"
 

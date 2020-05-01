@@ -20,7 +20,7 @@
         <div class="card-body">
           <% if current_or_guest_user.preference %>
           <p class="card-text">
-            With this plan you will receive a surprise box of tailored <%= current_or_guest_user.preference.stringify_categories %> items, among others.
+            <%= box.formatted_description(current_or_guest_user.preference) %>
           </p>
           <% end %>
           <input class="form-check-input boolean optional d-none" type="radio" value="<%= box.id %>" name="cart[box_id]">
